@@ -39,11 +39,6 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider(
               create: (context) => LanguageProvider(),
             ),
-            // BlocProvider(
-            //   create: (context) => LoginCubit(
-            //     getIt.get<LoginRepoImplementation>(),
-            //   ),
-            // ),
           ],
           child: Builder(builder: (context) {
             var languagesProvider = Provider.of<LanguageProvider>(context);
