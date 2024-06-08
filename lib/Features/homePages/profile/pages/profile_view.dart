@@ -1,19 +1,26 @@
+import 'package:easy_hr/Domain/entity/profile/profile_data_entity.dart';
+import 'package:easy_hr/Features/homePages/profile/manager/cubit.dart';
 import 'package:easy_hr/Features/homePages/profile/widgets/profile_info_widget.dart';
 import 'package:easy_hr/Features/homePages/profile/widgets/title_profile_widget.dart';
 import 'package:easy_hr/Features/homePages/profile/widgets/vacation_balance_widget.dart';
 import 'package:easy_hr/Features/homePages/profile/widgets/work_hours_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import '../../../../Core/constants/app_colors.dart';
 import '../../../../Core/widgets/gap.dart';
 import '../../../../Core/widgets/text_builder.dart';
+import '../manager/states.dart';
+import '../widgets/profile_shimmer_widget.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({
+   ProfileView({
     super.key,
   });
+
+  ProfileDataEntity profileData =  ProfileDataEntity();
 
   @override
   Widget build(BuildContext context) {
@@ -33,99 +40,129 @@ class ProfileView extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           color: AppColors.whiteColor,
         ),
-        // child: ListView.builder(
-        //   itemBuilder: (context, index) {
-        //     return const ProfileShimmerWidget();
-        //   },
-        //   itemCount: 5,
-        // )
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const TextBuilder(
-                    "Tarek el sayed",
-                    isHeader: true,
-                    fontSize: 17,
-                    color: AppColors.primaryColorGrey,
+        child:BlocProvider(
+          create: (context) => ProfileCubit()..getProfileData(),
+          child: BlocConsumer<ProfileCubit, ProfileState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is ProfileSuccessState) {
+                profileData = state.profileDataEntity;
+                return SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                           TextBuilder(
+                            profileData.empname ?? profileData.empename ?? "",
+                            isHeader: true,
+                            fontSize: 17,
+                            color: AppColors.primaryColorGrey,
+                          ),
+                          const GapW(w: 20),
+                          TextBuilder(
+                            "${local.employeeCode} : ${profileData.empcode}",
+                            isHeader: true,
+                            fontSize: 17,
+                            color: AppColors.primaryColorGrey,
+                          ),
+                        ],
+                      ),
+                      Divider(
+                        color: AppColors.primaryColorGrey,
+                        thickness: 2,
+                        height: 15.h,
+                      ),
+                      TitleProfileWidget(title: local.profileInfo),
+                      ProfileInfoWidget(
+                        text: local.nationalId,
+                        value: "${2031568402213214}",
+                        text2: local.dateOfBirth,
+                        value2: formatDate(profileData.birthdate ?? "1990-10-01T00:00:00" ),
+                      ),
+                      ProfileInfoWidget(
+                          text: local.mobileNo,
+                          value: "01280835258",
+                          text2: local.address,
+                          value2: profileData.address ?? ""),
+                      ProfileInfoWidget(
+                          text: local.qualification,
+                          value: profileData.educationname ?? profileData.educationename ?? "",
+                          text2: local.job,
+                          value2: profileData.jobname ?? ""),
+                      ProfileInfoWidget(
+                          text: local.nationality,
+                          value: profileData.nationname ?? profileData.nationename ?? "",
+                          text2: local.email,
+                          value2: profileData.email ?? ""),
+                      Divider(
+                        color: AppColors.primaryColorGrey,
+                        thickness: 2,
+                        height: 15.h,
+                      ),
+                      TitleProfileWidget(title: local.workHours),
+                      WorkHoursWidget(
+                          shiftNo: "${local.shift} 1", from: profileData.normalworkhoursfrom ?? "0", to: profileData.normalworkhoursto ?? "0"),
+                      WorkHoursWidget(
+                          shiftNo: "${local.shift} 2", from: profileData.weekendworkhoursfrom ?? "0", to: profileData.weekendworkhoursto ?? "0"),
+                      Divider(
+                        color: AppColors.primaryColorGrey,
+                        thickness: 2,
+                        height: 15.h,
+                      ),
+                      TitleProfileWidget(title: local.vacationsBalance),
+                      VacationBalanceWidget(
+                          typeVacation: local.annualBalance, dayNo: "22 ${local.days}"),
+                      VacationBalanceWidget(
+                          typeVacation: local.compensatoryBalance,
+                          dayNo: "13 ${local.days}"),
+                      Divider(
+                        color: AppColors.primaryColorGrey,
+                        thickness: 2,
+                        height: 15.h,
+                      ),
+                      TitleProfileWidget(title: local.salary),
+                      VacationBalanceWidget(
+                          typeVacation: local.basicSalary, dayNo: "2000 ${local.sar}"),
+                      VacationBalanceWidget(
+                          typeVacation: local.salaryDeductions,
+                          dayNo: "230 ${local.sar}"),
+                      VacationBalanceWidget(
+                          typeVacation: local.accountNumber, dayNo: "235681047"),
+                    ],
                   ),
-                  const GapW(w: 20),
-                  TextBuilder(
-                    "${local.employeeCode} : 336",
-                    isHeader: true,
-                    fontSize: 17,
-                    color: AppColors.primaryColorGrey,
+                );
+              } else if (state is ProfileErrorState) {
+                debugPrint(state.failure.message);
+                return const Center(
+                  child: TextBuilder(
+                      "Sorry there is error , we will work on it "),
+                );
+              } else if (state is ProfileLoadingState) {
+                return Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: AppColors.whiteColor,
+                    ),
+                    child: ListView.builder(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return const ProfileShimmerWidget();
+                        }),
                   ),
-                ],
-              ),
-              Divider(
-                color: AppColors.primaryColorGrey,
-                thickness: 2,
-                height: 15.h,
-              ),
-              TitleProfileWidget(title: local.profileInfo),
-              ProfileInfoWidget(
-                text: local.nationalId,
-                value: "${2031568402213214}",
-                text2: local.dateOfBirth,
-                value2: formatDate("2000-03-03"),
-              ),
-              ProfileInfoWidget(
-                  text: local.mobileNo,
-                  value: "01280835258",
-                  text2: local.address,
-                  value2: "el wehda st. , geda"),
-              ProfileInfoWidget(
-                  text: local.qualification,
-                  value: "Bachelor's Degree",
-                  text2: local.job,
-                  value2: "Employee Catcher"),
-              ProfileInfoWidget(
-                  text: local.nationality,
-                  value: "Saudi",
-                  text2: local.email,
-                  value2: "tareqelsayed@gmail.com"),
-              Divider(
-                color: AppColors.primaryColorGrey,
-                thickness: 2,
-                height: 15.h,
-              ),
-              TitleProfileWidget(title: local.workHours),
-              WorkHoursWidget(
-                  shiftNo: "${local.shift} 1", from: "9:00 AM", to: "1:00 PM"),
-              WorkHoursWidget(
-                  shiftNo: "${local.shift} 2", from: "4:00 PM", to: "8:00 PM"),
-              Divider(
-                color: AppColors.primaryColorGrey,
-                thickness: 2,
-                height: 15.h,
-              ),
-              TitleProfileWidget(title: local.vacationsBalance),
-              VacationBalanceWidget(
-                  typeVacation: local.annualBalance, dayNo: "22 ${local.days}"),
-              VacationBalanceWidget(
-                  typeVacation: local.compensatoryBalance,
-                  dayNo: "13 ${local.days}"),
-              Divider(
-                color: AppColors.primaryColorGrey,
-                thickness: 2,
-                height: 15.h,
-              ),
-              TitleProfileWidget(title: local.salary),
-              VacationBalanceWidget(
-                  typeVacation: local.basicSalary, dayNo: "2000 ${local.sar}"),
-              VacationBalanceWidget(
-                  typeVacation: local.salaryDeductions,
-                  dayNo: "230 ${local.sar}"),
-              VacationBalanceWidget(
-                  typeVacation: local.accountNumber, dayNo: "235681047"),
-            ],
+                );
+              } else{
+                return const CircularProgressIndicator();
+              }
+            },
           ),
-        ),
+        )
       ),
     );
   }

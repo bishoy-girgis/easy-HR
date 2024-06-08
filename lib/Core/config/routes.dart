@@ -24,7 +24,7 @@ class Routes {
             builder: (context) => const SettingsView(), settings: routeSettings);
       case PageRouteName.profile:
         return MaterialPageRoute(
-            builder: (context) => const ProfileView(), settings: routeSettings);
+            builder: (context) =>  ProfileView(), settings: routeSettings);
       default:
         return MaterialPageRoute<dynamic>(
             builder: (context) => const SplashView(), settings: routeSettings);

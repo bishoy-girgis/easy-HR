@@ -48,7 +48,7 @@ class LoginCubit extends Cubit<LoginState> {
       SharedPref.set(key: 'ccid', value: user.ccId);
       SharedPref.set(key: 'branchID', value: user.branchId);
       AppConstants.updateValues();
-      log("${SharedPref.get(key: "empId")}");
+      log("emp idd ${SharedPref.get(key: "empId")}");
       log(AppConstants.accessToken);
       emit(LoginSuccessState(userEntity: r));
       return user;

@@ -18,7 +18,6 @@ class AppConstants {
   static String taxNumber = SharedPref.get(key: "taxNumber") ?? "";
   static String notes = SharedPref.get(key: "notes") ?? "";
 
-  ///Authorization
   static String accessToken = SharedPref.get(key: "accessToken") ?? "";
 
   static void updateValues() {
