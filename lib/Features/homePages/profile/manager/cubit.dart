@@ -27,7 +27,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     }, (r) async {
       profileData = r;
       emit(ProfileSuccessState(profileDataEntity: profileData));
-      return profileData;
     });
   }
 }

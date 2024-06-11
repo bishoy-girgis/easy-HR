@@ -16,11 +16,9 @@ import '../manager/states.dart';
 import '../widgets/profile_shimmer_widget.dart';
 
 class ProfileView extends StatelessWidget {
-   ProfileView({
+  ProfileView({
     super.key,
   });
-
-  ProfileDataEntity profileData =  ProfileDataEntity();
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +38,13 @@ class ProfileView extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           color: AppColors.whiteColor,
         ),
-        child:BlocProvider(
+        child: BlocProvider(
           create: (context) => ProfileCubit()..getProfileData(),
           child: BlocConsumer<ProfileCubit, ProfileState>(
             listener: (context, state) {},
             builder: (context, state) {
               if (state is ProfileSuccessState) {
-                profileData = state.profileDataEntity;
+                var profileData = state.profileDataEntity;
                 return SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -55,7 +53,7 @@ class ProfileView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           TextBuilder(
+                          TextBuilder(
                             profileData.empname ?? profileData.empename ?? "",
                             isHeader: true,
                             fontSize: 17,
@@ -80,7 +78,8 @@ class ProfileView extends StatelessWidget {
                         text: local.nationalId,
                         value: "${2031568402213214}",
                         text2: local.dateOfBirth,
-                        value2: formatDate(profileData.birthdate ?? "1990-10-01T00:00:00" ),
+                        value2: formatDate(
+                            profileData.birthdate ?? "1990-10-01T00:00:00"),
                       ),
                       ProfileInfoWidget(
                           text: local.mobileNo,
@@ -89,12 +88,16 @@ class ProfileView extends StatelessWidget {
                           value2: profileData.address ?? ""),
                       ProfileInfoWidget(
                           text: local.qualification,
-                          value: profileData.educationname ?? profileData.educationename ?? "",
+                          value: profileData.educationname ??
+                              profileData.educationename ??
+                              "",
                           text2: local.job,
                           value2: profileData.jobname ?? ""),
                       ProfileInfoWidget(
                           text: local.nationality,
-                          value: profileData.nationname ?? profileData.nationename ?? "",
+                          value: profileData.nationname ??
+                              profileData.nationename ??
+                              "",
                           text2: local.email,
                           value2: profileData.email ?? ""),
                       Divider(
@@ -104,9 +107,13 @@ class ProfileView extends StatelessWidget {
                       ),
                       TitleProfileWidget(title: local.workHours),
                       WorkHoursWidget(
-                          shiftNo: "${local.shift} 1", from: profileData.normalworkhoursfrom ?? "0", to: profileData.normalworkhoursto ?? "0"),
+                          shiftNo: "${local.shift} 1",
+                          from: profileData.normalworkhoursfrom ?? "0",
+                          to: profileData.normalworkhoursto ?? "0"),
                       WorkHoursWidget(
-                          shiftNo: "${local.shift} 2", from: profileData.weekendworkhoursfrom ?? "0", to: profileData.weekendworkhoursto ?? "0"),
+                          shiftNo: "${local.shift} 2",
+                          from: profileData.weekendworkhoursfrom ?? "0",
+                          to: profileData.weekendworkhoursto ?? "0"),
                       Divider(
                         color: AppColors.primaryColorGrey,
                         thickness: 2,
@@ -114,10 +121,11 @@ class ProfileView extends StatelessWidget {
                       ),
                       TitleProfileWidget(title: local.vacationsBalance),
                       VacationBalanceWidget(
-                          typeVacation: local.annualBalance, dayNo: "22 ${local.days}"),
+                          typeVacation: local.annualBalance,
+                          dayNo: "${profileData.balancenormal} ${local.days}"),
                       VacationBalanceWidget(
                           typeVacation: local.compensatoryBalance,
-                          dayNo: "13 ${local.days}"),
+                          dayNo: "${profileData.balancearda} ${local.days}"),
                       Divider(
                         color: AppColors.primaryColorGrey,
                         thickness: 2,
@@ -125,44 +133,48 @@ class ProfileView extends StatelessWidget {
                       ),
                       TitleProfileWidget(title: local.salary),
                       VacationBalanceWidget(
-                          typeVacation: local.basicSalary, dayNo: "2000 ${local.sar}"),
+                          typeVacation: local.basicSalary,
+                          dayNo: "${profileData.basicsalary} ${local.sar}"),
                       VacationBalanceWidget(
                           typeVacation: local.salaryDeductions,
                           dayNo: "230 ${local.sar}"),
                       VacationBalanceWidget(
-                          typeVacation: local.accountNumber, dayNo: "235681047"),
+                          typeVacation: local.accountNumber,
+                          dayNo: "235681047"),
                     ],
                   ),
                 );
               } else if (state is ProfileErrorState) {
                 debugPrint(state.failure.message);
-                return const Center(
-                  child: TextBuilder(
-                      "Sorry there is error , we will work on it "),
+                return Center(
+                  child: TextBuilder("Sorry ${state.failure.message}"),
                 );
               } else if (state is ProfileLoadingState) {
-                return Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.whiteColor,
-                    ),
-                    child: ListView.builder(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10,
+                return Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: AppColors.whiteColor,
                         ),
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return const ProfileShimmerWidget();
-                        }),
-                  ),
+                        child: ListView.builder(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return const ProfileShimmerWidget();
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 );
-              } else{
+              } else {
                 return const CircularProgressIndicator();
               }
             },
           ),
-        )
+        ),
       ),
     );
   }

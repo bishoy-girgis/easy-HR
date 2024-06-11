@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:easy_hr/Core/constants/app_constants.dart';
 
+import 'cache_helper.dart';
+
 class WebService {
   String get token{
-    return AppConstants.accessToken;
+    return SharedPref.get(key: "accessToken") ?? "null";
   }
   Dio publicDio = Dio();
 
@@ -20,6 +22,7 @@ class WebService {
     publicDio.options.headers=  {
       'Authorization': 'Bearer $token',
     };
+    print(token);
     publicDio.options.baseUrl = AppConstants.baseUrl;
     publicDio.options.connectTimeout = const Duration(milliseconds: 30000);
     publicDio.options.sendTimeout = const Duration(milliseconds: 30000);

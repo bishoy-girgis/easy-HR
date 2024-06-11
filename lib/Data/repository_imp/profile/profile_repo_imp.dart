@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_hr/Core/error/faliure.dart';
@@ -18,8 +17,8 @@ class ProfileRepositoryImp implements ProfileRepository {
   Future<Either<Failure, ProfileDataEntity>> profileData() async {
     try {
       var result = await profileDataSource.profileData();
-      ProfileModel profile = ProfileModel.fromJson(result.data);
-      return Right(profile);
+      List<dynamic> profiles = result.data.map((item) => ProfileModel.fromJson(item as Map<String, dynamic>)).toList();
+      return Right(profiles[0]);
     } catch (e) {
       DioException error = e as DioException;
       debugPrint("${error.response}");
@@ -39,6 +38,4 @@ class ProfileRepositoryImp implements ProfileRepository {
       }
     }
   }
-
-
 }
