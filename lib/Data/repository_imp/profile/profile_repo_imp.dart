@@ -40,7 +40,8 @@ class ProfileRepositoryImp implements ProfileRepository {
       } else {
         return left(Failure(
           statusCode:  "",
-          message: e.toString(),
+          message: e.toString()
+          ,
         ));
       }
 
