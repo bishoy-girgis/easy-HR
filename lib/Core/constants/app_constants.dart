@@ -3,7 +3,7 @@ import '../services/cache_helper.dart';
 class AppConstants {
   static const String logo = "assets/images/logo.png";
   static String baseUrl =
-      SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:610";
+      SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:600";
   static int empId = SharedPref.get(key: "empId");
   static int whId = SharedPref.get(key: "whId");
   static int printerFormat = SharedPref.get(key: 'printerFormat');
@@ -27,13 +27,13 @@ class AppConstants {
     branchID = SharedPref.get(key: "branchID");
     ccid = SharedPref.get(key: "ccid");
     vatType = SharedPref.get(key: "VATType");
-    baseUrl = SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:610";
+    baseUrl = SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:600";
     accessToken = SharedPref.get(key: "accessToken");
     empId = SharedPref.get(key: "empId");
   }
 
   static void updateSettingValues() {
-    baseUrl = SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:610";
+    baseUrl = SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:600";
     branchName = SharedPref.get(key: "branchName") ?? "";
     branchAddress = SharedPref.get(key: "branchAddress") ?? "";
     taxNumber = SharedPref.get(key: "taxNumber") ?? "";

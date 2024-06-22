@@ -1,14 +1,11 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:easy_hr/Core/constants/app_constants.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'cache_helper.dart';
 
 class WebService {
-  String get token{
-    return SharedPref.get(key: "accessToken") ?? "null";
-  }
   Dio publicDio = Dio();
 
   static WebService? _this;
@@ -19,17 +16,31 @@ class WebService {
   }
 
   WebService._() {
-    publicDio.options.headers=  {
-      'Authorization': 'Bearer $token',
-    };
-    print(token);
+    updateAuthorizationHeader();
     publicDio.options.baseUrl = AppConstants.baseUrl;
     publicDio.options.connectTimeout = const Duration(milliseconds: 30000);
     publicDio.options.sendTimeout = const Duration(milliseconds: 30000);
     publicDio.options.receiveTimeout = const Duration(milliseconds: 30000);
     publicDio.options.connectTimeout = const Duration(milliseconds: 30000);
+    publicDio.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: false,
+        error: true,
+        compact: true,
+      ),
+    );
+    // interceptors();
+  }
 
-    interceptors();
+  String get token {
+    return SharedPref.get(key: "accessToken") ?? "";
+  }
+
+  void updateAuthorizationHeader() {
+    publicDio.options.headers['Authorization'] = 'Bearer $token';
   }
 
   void interceptors() {
@@ -54,5 +65,10 @@ class WebService {
         return handler.next(e);
       },
     ));
+  }
+
+  void setToken(String newToken) {
+    SharedPref.set(key: "accessToken", value: newToken);
+    updateAuthorizationHeader();
   }
 }

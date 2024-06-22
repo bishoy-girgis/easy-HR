@@ -13,7 +13,8 @@ import '../../../Domain/usecase/login/login_usecase.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
-  late LoginDataSource loginDataSource = LoginDataSource(WebService().publicDio);
+  late LoginDataSource loginDataSource =
+      LoginDataSource(WebService().publicDio);
   late LoginRepository loginRepository = LoginRepositoryImp(loginDataSource);
   late LoginUseCase loginUseCase = LoginUseCase(loginRepository);
 
@@ -48,8 +49,10 @@ class LoginCubit extends Cubit<LoginState> {
       SharedPref.set(key: 'ccid', value: user.ccId);
       SharedPref.set(key: 'branchID', value: user.branchId);
       AppConstants.updateValues();
+      WebService().setToken(user.accessToken!);
       log("emp idd ${SharedPref.get(key: "empId")}");
-      log(AppConstants.accessToken);
+      AppConstants.accessToken = user.accessToken!;
+      log("ACCESS TOKEN  ${AppConstants.accessToken}");
       emit(LoginSuccessState(userEntity: r));
       return user;
     });
