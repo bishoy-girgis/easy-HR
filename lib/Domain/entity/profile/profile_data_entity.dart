@@ -39,8 +39,8 @@ class ProfileDataEntity extends Equatable {
   String? nationename;
   String? address;
   String? eaddress;
-  int? id;
-  int? basicsalary;
+  String? id;
+  double? basicsalary;
   String? empBank;
   String? paymenttype;
   int? balancearda;

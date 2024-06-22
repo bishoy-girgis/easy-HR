@@ -20,22 +20,30 @@ class ProfileRepositoryImp implements ProfileRepository {
       List<dynamic> profiles = result.data.map((item) => ProfileModel.fromJson(item as Map<String, dynamic>)).toList();
       return Right(profiles[0]);
     } catch (e) {
-      DioException error = e as DioException;
-      debugPrint("${error.response}");
+      if(e is DioException){
+        DioException error = e;
+        debugPrint("${error.response}");
 
-      if (error.response?.statusCode == 401) {
-        return left(
-          Failure(
+        if (error.response?.statusCode == 401) {
+          return left(
+            Failure(
+              statusCode: error.response?.statusCode.toString() ?? "",
+              message: error.response?.data["error"],
+            ),
+          );
+        } else {
+          return left(Failure(
             statusCode: error.response?.statusCode.toString() ?? "",
-            message: error.response?.data["error"],
-          ),
-        );
+            message: error.response?.data["Message"],
+          ));
+        }
       } else {
         return left(Failure(
-          statusCode: error.response?.statusCode.toString() ?? "",
-          message: error.response?.data["Message"],
+          statusCode:  "",
+          message: e.toString(),
         ));
       }
+
     }
   }
 }

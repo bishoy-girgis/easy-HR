@@ -76,7 +76,7 @@ class ProfileView extends StatelessWidget {
                       TitleProfileWidget(title: local.profileInfo),
                       ProfileInfoWidget(
                         text: local.nationalId,
-                        value: "${2031568402213214}",
+                        value: "${profileData.id}",
                         text2: local.dateOfBirth,
                         value2: formatDate(
                             profileData.birthdate ?? "1990-10-01T00:00:00"),
@@ -137,10 +137,10 @@ class ProfileView extends StatelessWidget {
                           dayNo: "${profileData.basicsalary} ${local.sar}"),
                       VacationBalanceWidget(
                           typeVacation: local.salaryDeductions,
-                          dayNo: "230 ${local.sar}"),
+                          dayNo: "00 ${local.sar}"),
                       VacationBalanceWidget(
                           typeVacation: local.accountNumber,
-                          dayNo: "235681047"),
+                          dayNo: "${profileData.empBank}"),
                     ],
                   ),
                 );
