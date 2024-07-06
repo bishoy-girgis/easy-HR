@@ -35,6 +35,9 @@ class HomeView extends StatelessWidget {
                   imageIcon: const AssetImage("assets/images/contact-info.png"),
                 ),
                 CategoryWidget(
+                  onTap: () {
+                    navigatorKey.currentState?.pushNamed(PageRouteName.vacations);
+                  },
                   categoryName: local.vacations,
                   image: true,
                   imageIcon: const AssetImage("assets/images/beach.png"),

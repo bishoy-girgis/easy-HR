@@ -4,4 +4,6 @@ class PageRouteName {
   static const home = "/home";
   static const settings = "/settings";
   static const profile = "/profile";
+  static const vacations = "/vacations";
+  static const createVacations = "/createVacation";
 }
