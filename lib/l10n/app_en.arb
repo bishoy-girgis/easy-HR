@@ -64,6 +64,6 @@
     "profileInfo": "Profile Info",
     "days": "Days",
     "sar": "SAR",
-    "to": "To"
-
+    "to": "To",
+    "notes" : "Notes"
 }

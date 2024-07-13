@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import '../../../../Core/constants/app_colors.dart';
 import '../../../../Core/widgets/gap.dart';
 import '../../../../Core/widgets/text_builder.dart';
+import '../../../Core/constants/app_constants.dart';
 import '../manager/cubit.dart';
 import '../manager/states.dart';
 import '../widgets/profile_info_widget.dart';
@@ -79,7 +80,7 @@ class ProfileView extends StatelessWidget {
                         text: local.nationalId,
                         value: "${profileData.id}",
                         text2: local.dateOfBirth,
-                        value2: formatDate(
+                        value2: AppConstants.formatDate(
                             profileData.birthdate ?? "1990-10-01T00:00:00"),
                       ),
                       ProfileInfoWidget(
@@ -180,9 +181,5 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  String formatDate(String dateTimeString) {
-    DateTime dateTime = DateTime.parse(dateTimeString);
-    DateFormat dateFormat = DateFormat('dd/MM/yyyy');
-    return dateFormat.format(dateTime);
-  }
+
 }

@@ -1,27 +1,34 @@
 import 'package:easy_hr/Core/constants/app_colors.dart';
 import 'package:easy_hr/Core/widgets/gap.dart';
 import 'package:easy_hr/Core/widgets/text_builder.dart';
+import 'package:easy_hr/Features/vacations/manager/vacation_cubit.dart';
 import 'package:easy_hr/Features/vacations/widgets/date_diffrence_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../Core/services/cache_helper.dart';
+import '../../../Core/widgets/custom_text_form_field.dart';
 
 class SelectDateVacation extends StatefulWidget {
   const SelectDateVacation({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _SelectDateVacationState createState() => _SelectDateVacationState();
 }
 
 class _SelectDateVacationState extends State<SelectDateVacation> {
-  DateTime? fromDate;
-  DateTime? toDate;
-  int differenceInDays = 0;
+  DateTime? fromDate =DateTime.now();
+  DateTime? toDate =DateTime.now();
+  int differenceInDays = 1;
+  TextEditingController notes = TextEditingController();
 
   void _onFromDateSelected(DateTime date) {
     setState(() {
       fromDate = date;
       _calculateDifference();
+      context.read<VacationCubit>().setFromDate(date);
     });
   }
 
@@ -29,16 +36,18 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
     setState(() {
       toDate = date;
       _calculateDifference();
+      context.read<VacationCubit>().setToDate(date);
     });
   }
 
   void _calculateDifference() {
-    if (fromDate != null && toDate != null) {
       setState(() {
-        differenceInDays = toDate!.difference(fromDate!).inDays;
+        differenceInDays = toDate!.difference(fromDate!).inDays + 1;
       });
-    }
+
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,31 +64,48 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              const TextBuilder("From"),
-              const GapW(w: 3),
-              Flexible(
-                child: DateDiffrenceWidget(onDateSelected: _onFromDateSelected),
-              ),
-            ],
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: const Color.fromRGBO(227, 227, 227, 1),
+            ),
+            child: Row(
+              children: [
+                const TextBuilder("From"),
+                const GapW(w: 3),
+                Flexible(
+                  child: DateDiffrenceWidget(onDateSelected: _onFromDateSelected),
+                ),
+              ],
+            ),
           ),
-          Row(
-            children: [
-              const TextBuilder("To     "),
-              const GapW(w: 3),
-              Flexible(
-                child: DateDiffrenceWidget(onDateSelected: _onToDateSelected),
-              ),
-            ],
+          const GapH(h: 1),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: const Color.fromRGBO(227, 227, 227, 1),
+            ),
+            child: Row(
+              children: [
+                const TextBuilder("To     "),
+                const GapW(w: 3),
+                Flexible(
+                  child: DateDiffrenceWidget(onDateSelected: _onToDateSelected),
+                ),
+              ],
+            ),
           ),
-          Container(),
+          const GapH(h: 1),
           Container(
             margin: const EdgeInsets.all(5),
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(
-                vertical: 8.0, horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: const Color.fromRGBO(227, 227, 227, 1),
@@ -93,6 +119,36 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
                 const TextBuilder("day/s"),
               ],
             ),
+          ),
+          const GapH(h: 1),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextBuilder(
+                AppLocalizations.of(context)!.notes,
+                isHeader: true,
+              ),
+              const GapW(w: 2),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                  ),
+                  child: CustomTextFormField(
+                    controller: notes,
+                    labelText: AppLocalizations.of(context)!.notes,
+                    maxLines: 3,
+                    onChange: (value) {
+                      notes.text = value;
+                      SharedPref.set(key: "notesVacation", value: value);
+                      debugPrint('sharedddd NOTES ' +
+                          SharedPref.get(key: 'notesVacation'));
+                      setState(() {});
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import '../services/cache_helper.dart';
 
 class AppConstants {
@@ -38,5 +40,10 @@ class AppConstants {
     branchAddress = SharedPref.get(key: "branchAddress") ?? "";
     taxNumber = SharedPref.get(key: "taxNumber") ?? "";
     notes = SharedPref.get(key: "notes") ?? "";
+  }
+  static String formatDate(String dateTimeString) {
+    DateTime dateTime = DateTime.parse(dateTimeString);
+    DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+    return dateFormat.format(dateTime);
   }
 }

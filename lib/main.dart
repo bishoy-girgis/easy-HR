@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_hr/Core/config/page_route_name.dart';
+import 'package:easy_hr/Features/vacations/manager/vacation_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider(
               create: (context) => LanguageProvider(),
             ),
+            BlocProvider(
+                create: (context) =>VacationCubit()),
           ],
           child: Builder(builder: (context) {
             var languagesProvider = Provider.of<LanguageProvider>(context);

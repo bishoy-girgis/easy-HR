@@ -20,7 +20,7 @@ class _DateDiffrenceWidgetState extends State<DateDiffrenceWidget> {
     DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: selectedDate!,
-      firstDate: DateTime(2000),
+      firstDate: DateTime.now(),
       lastDate: DateTime(3000),
     );
     return pickedDate;

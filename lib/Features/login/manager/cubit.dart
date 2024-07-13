@@ -48,6 +48,7 @@ class LoginCubit extends Cubit<LoginState> {
       SharedPref.set(key: 'vat', value: user.vat);
       SharedPref.set(key: 'ccid', value: user.ccId);
       SharedPref.set(key: 'branchID', value: user.branchId);
+      SharedPref.set(key: 'companyID', value: user.companyId);
       AppConstants.updateValues();
       WebService().setToken(user.accessToken!);
       log("emp idd ${SharedPref.get(key: "empId")}");
