@@ -69,12 +69,9 @@ class VacationTypeWidget extends StatelessWidget {
                   )),
             ),
             onChanged: (VacationTypeEntity? data) {
-              debugPrint("${data!.vacationTypeId}");
-              debugPrint(data.vacationTypeName);
-              debugPrint(data.vacationTypeEName);
-              debugPrint("${data.vacationTypet}");
               SharedPref.set(
-                  key: "vacationTypeID", value: data.vacationTypeId ?? 0);
+                  key: "vacationTypeID", value: data?.vacationTypeId ?? 0);
+              debugPrint("${SharedPref.get(key: "vacationTypeID")}");
             },
             // selectedItem: itemSelected,
           ),

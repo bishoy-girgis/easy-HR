@@ -11,8 +11,8 @@ class AddVacationUseCase {
 
   Future<Either<Failure, String>> execute({
     required int vacationTypeId,
-    required String dateFrom,
-    required String dateTo,
+    required DateTime dateFrom,
+    required DateTime dateTo,
     required String notes,
   }) async {
     return await vacationsRepository.addVacation(

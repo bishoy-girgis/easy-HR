@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 import '../../../Core/constants/end_points.dart';
 import '../../../Core/services/cache_helper.dart';
@@ -24,20 +25,28 @@ class VacationDataSource {
 
   Future<Response> addVacation({
     required int vacationTypeId,
-    required String dateFrom,
-    required String dateTo,
+    required DateTime dateFrom,
+    required DateTime dateTo,
     required String notes,
-  }) {
+  }) async {
     String user = SharedPref.get(key: "userName");
     int companyId = SharedPref.get(key: "companyID");
-    return dio.post(EndPoints.addVacation, queryParameters: {
+    var body = {
       "EmpId": empId,
       "VacationTypeId": vacationTypeId,
-      "DateFrom": dateFrom,
-      "DateTo": dateTo,
-      "notes": notes,
+      "DateFrom": DateFormat('dd/MM/yyyy').format(dateFrom),
+      "DateTo": DateFormat('dd/MM/yyyy').format(dateTo),
+      "notes": notes ?? "",
       "user": user,
       "companyid": companyId,
-    });
+    };
+
+    final response = await dio.post(
+      EndPoints.addVacation,
+      data: body,
+        options: Options(contentType: Headers.formUrlEncodedContentType)
+    );
+
+    return response;
   }
 }

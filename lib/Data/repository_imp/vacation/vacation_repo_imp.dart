@@ -102,8 +102,8 @@ class VacationRepositoryImp implements VacationsRepository {
   @override
   Future<Either<Failure, String>> addVacation({
     required int vacationTypeId,
-    required String dateFrom,
-    required String dateTo,
+    required DateTime dateFrom,
+    required DateTime dateTo,
     required String notes,
   }) async {
     try {

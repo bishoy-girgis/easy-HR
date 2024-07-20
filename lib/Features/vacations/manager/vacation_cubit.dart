@@ -68,10 +68,10 @@ class VacationCubit extends Cubit<VacationState> {
     emit(AddVacationLoadingState());
     AddVacationUseCase vacationUseCase = AddVacationUseCase(vacationRepository);
     var result = await vacationUseCase.execute(
-        vacationTypeId: SharedPref.get(key: "vacationTypeID"),
-        dateFrom: "$fromDate",
-        dateTo: "$toDate",
-        notes: SharedPref.get(key: "notesVacation"));
+        vacationTypeId: SharedPref.get(key: "vacationTypeID") ?? 1,
+        dateFrom: fromDate ?? DateTime.now(),
+        dateTo: toDate ?? DateTime.now(),
+        notes: SharedPref.get(key: "notesVacation")?? "");
     result.fold((error) {
       debugPrint(error.message);
       emit(VacationErrorState(error));

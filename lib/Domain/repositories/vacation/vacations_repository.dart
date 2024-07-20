@@ -10,8 +10,8 @@ abstract class VacationsRepository {
 
   Future<Either<Failure, String>> addVacation({
     required int vacationTypeId,
-    required String dateFrom,
-    required String dateTo,
+    required DateTime dateFrom,
+    required DateTime dateTo,
     required String notes,
   });
 }
