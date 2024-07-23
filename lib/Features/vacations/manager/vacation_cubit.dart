@@ -6,6 +6,7 @@ import 'package:easy_hr/Domain/usecase/vacation/vacatios_type_usecase.dart';
 import 'package:easy_hr/Features/vacations/manager/vacation_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import '../../../Core/services/web_service.dart';
 import '../../../Data/data_source/vacation/vacation_data_source.dart';
 import '../../../Data/repository_imp/vacation/vacation_repo_imp.dart';
@@ -29,11 +30,15 @@ class VacationCubit extends Cubit<VacationState> {
 
   void setFromDate(DateTime date) {
     fromDate = date;
+    String fromFormattedDate = DateFormat('dd/MM/yyyy').format(fromDate!);
+    SharedPref.set(key: 'fromDate', value: fromFormattedDate);
     emit(VacationDateChanged(fromDate: fromDate, toDate: toDate));
   }
 
   void setToDate(DateTime date) {
     toDate = date;
+    String toFormattedDate = DateFormat('dd/MM/yyyy').format(toDate!);
+    SharedPref.set(key: 'toDate', value: toFormattedDate);
     emit(VacationDateChanged(fromDate: fromDate, toDate: toDate));
   }
 
@@ -69,9 +74,11 @@ class VacationCubit extends Cubit<VacationState> {
     AddVacationUseCase vacationUseCase = AddVacationUseCase(vacationRepository);
     var result = await vacationUseCase.execute(
         vacationTypeId: SharedPref.get(key: "vacationTypeID") ?? 1,
-        dateFrom: fromDate ?? DateTime.now(),
-        dateTo: toDate ?? DateTime.now(),
-        notes: SharedPref.get(key: "notesVacation")?? "");
+        dateFrom: DateFormat('dd/MM/yyyy').parse(SharedPref.get(key: 'fromDate') ??
+            DateFormat('dd/MM/yyyy').format(DateTime.now())),
+        dateTo: DateFormat('dd/MM/yyyy').parse(SharedPref.get(key: 'toDate') ??
+            DateFormat('dd/MM/yyyy').format(DateTime.now())),
+        notes: SharedPref.get(key: "notesVacation")?? "N/A");
     result.fold((error) {
       debugPrint(error.message);
       emit(VacationErrorState(error));

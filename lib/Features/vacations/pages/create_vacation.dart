@@ -42,7 +42,7 @@ class CreateVacation extends StatelessWidget {
               if (state is AddVacationSuccessState) {
                 GlobalMethods.buildFlutterToast(
                     message: state.message, state: ToastStates.SUCCESS);
-                navigatorKey.currentState?.pushNamed(PageRouteName.vacations);
+                navigatorKey.currentState?.pushReplacementNamed(PageRouteName.vacations);
               } else if (state is AddVacationErrorState) {
                 GlobalMethods.navigatePOP(context);
                 GlobalMethods.buildFlutterToast(
@@ -83,12 +83,14 @@ class CreateVacation extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(12.sp),
-          child: const Column(
-            children: [
-              VoucherMainData(),
-              GapH(h: 2),
-              SelectDateVacation(),
-            ],
+          child: const SingleChildScrollView(
+            child: Column(
+              children: [
+                VoucherMainData(),
+                GapH(h: 2),
+                SelectDateVacation(),
+              ],
+            ),
           ),
         ),
       ),
