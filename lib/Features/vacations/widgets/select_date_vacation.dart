@@ -42,7 +42,7 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
 
   void _calculateDifference() {
       setState(() {
-        differenceInDays = toDate!.difference(fromDate!).inDays + 1;
+        differenceInDays = toDate!.difference(fromDate!).inDays + 2;
       });
 
   }
