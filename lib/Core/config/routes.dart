@@ -5,7 +5,7 @@ import 'package:easy_hr/Features/vacations/pages/create_vacation.dart';
 import 'package:easy_hr/Features/vacations/pages/vacations_view.dart';
 import 'package:flutter/material.dart';
 import '../../Features/login/pages/login_view.dart';
-import '../../Features/profile/pages/profile_view.dart';
+import '../../Features/profileInfo/pages/profile_view.dart';
 import '../../Features/splash/splash_view.dart';
 
 class Routes {
