@@ -55,7 +55,7 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: AppColors.whiteColor,
+        color: Colors.white,
         boxShadow: const [
           BoxShadow(
             color: Colors.black,

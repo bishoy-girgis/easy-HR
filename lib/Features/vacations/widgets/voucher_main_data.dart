@@ -3,11 +3,8 @@ import 'package:easy_hr/Features/vacations/manager/vacation_states.dart';
 import 'package:easy_hr/Features/vacations/widgets/pick_date_widget.dart';
 import 'package:easy_hr/Features/vacations/widgets/vacation_type_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../Core/constants/app_colors.dart';
 import '../../../Core/widgets/custom_text_form_field.dart';
 import '../../../Core/widgets/gap.dart';
@@ -22,7 +19,7 @@ class VoucherMainData extends StatelessWidget {
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: AppColors.whiteColor,
+          color: Colors.white,
           boxShadow: const [
             BoxShadow(
               color: Colors.black,
@@ -32,29 +29,29 @@ class VoucherMainData extends StatelessWidget {
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextBuilder(
+          const TextBuilder(
             "Voucher no",
             isHeader: true,
           ),
-          CustomTextFormField(
+          const CustomTextFormField(
             labelText: "AUTO",
             centerContent: true,
             isLabelBold: true,
             isClickable: false,
           ),
-          GapH(h: 1),
-          TextBuilder(
+          const GapH(h: 1),
+          const TextBuilder(
             "Vacation request Date",
             isHeader: true,
           ),
-          Row(
+          const Row(
             children: [
               Flexible(child: DatePickerWidget()),
               GapW(w: 1),
               Flexible(child: HoursAndMinutes()),
             ],
           ),
-          GapH(h: 1),
+          const GapH(h: 1),
 
           BlocProvider(
             create: (context) => VacationCubit()..getVacationTypes(),

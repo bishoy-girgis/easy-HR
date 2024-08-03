@@ -61,6 +61,7 @@ class CreateVacation extends StatelessWidget {
                           titleButton1: "yes",
                           titleButton2: "no",
                           onPressedButton1: () async {
+                            GlobalMethods.navigatePOP(context);
                             await BlocProvider.of<VacationCubit>(context)
                                 .addVacation();
                             SharedPref.remove(key: "notesVacation");
