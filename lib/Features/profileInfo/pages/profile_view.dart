@@ -1,10 +1,7 @@
-import 'package:easy_hr/Domain/entity/profile/profile_data_entity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import '../../../../Core/constants/app_colors.dart';
 import '../../../../Core/widgets/gap.dart';
 import '../../../../Core/widgets/text_builder.dart';

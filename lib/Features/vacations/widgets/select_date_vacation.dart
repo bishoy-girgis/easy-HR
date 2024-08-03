@@ -1,4 +1,4 @@
-import 'package:easy_hr/Core/constants/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:easy_hr/Core/widgets/gap.dart';
 import 'package:easy_hr/Core/widgets/text_builder.dart';
 import 'package:easy_hr/Features/vacations/manager/vacation_cubit.dart';
@@ -51,6 +51,7 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Container(
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
@@ -75,7 +76,7 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
             ),
             child: Row(
               children: [
-                const TextBuilder("From"),
+                 TextBuilder(local.from,),
                 const GapW(w: 3),
                 Flexible(
                   child: DateDiffrenceWidget(onDateSelected: _onFromDateSelected),
@@ -93,7 +94,7 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
             ),
             child: Row(
               children: [
-                const TextBuilder("To     "),
+                 TextBuilder(local.to),
                 const GapW(w: 3),
                 Flexible(
                   child: DateDiffrenceWidget(onDateSelected: _onToDateSelected),
@@ -112,11 +113,11 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
             ),
             child: Row(
               children: [
-                const TextBuilder("Days"),
+                 TextBuilder(local.daysBalance),
                 const Spacer(),
                 TextBuilder("$differenceInDays"),
                 const Spacer(),
-                const TextBuilder("day/s"),
+                 TextBuilder(local.dayss),
               ],
             ),
           ),

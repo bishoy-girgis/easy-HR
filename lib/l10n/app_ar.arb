@@ -54,5 +54,13 @@
   "days": "يوم",
   "sar": "ريال سعودي",
   "to": "الي",
-  "notes" : "ملاحظات"
+  "notes" : "ملاحظات",
+  "vacationNumber": "رقم الإجازة",
+  "vacationRequestDate": "تاريخ طلب الإجازة",
+  "vacationTypes": "نوع الإجازات",
+  "from": "من",
+  "daysBalance": "عدد الأيام",
+  "dayss": "يوم",
+  "auto" : "تلقائى",
+  "createVacation" : "طلب اجازة"
 }

@@ -65,5 +65,13 @@
     "days": "Days",
     "sar": "SAR",
     "to": "To",
-    "notes" : "Notes"
+    "notes" : "Notes",
+    "vacationNumber" : "Vacation No",
+    "vacationRequestDate" : "Vacation Request Date",
+    "vacationTypes" : "Vacation Types",
+    "from" : "From",
+    "daysBalance" : "Days",
+    "dayss" : "day/s",
+    "auto" : "Auto",
+    "createVacation" : "Create Vacation"
 }

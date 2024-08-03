@@ -5,7 +5,7 @@ import 'package:easy_hr/Features/vacations/widgets/vacation_type_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../Core/constants/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../Core/widgets/custom_text_form_field.dart';
 import '../../../Core/widgets/gap.dart';
 import '../../../Core/widgets/text_builder.dart';
@@ -15,6 +15,7 @@ class VoucherMainData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Container(
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
@@ -29,19 +30,19 @@ class VoucherMainData extends StatelessWidget {
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TextBuilder(
-            "Voucher no",
+           TextBuilder(
+            local.vacationNumber,
             isHeader: true,
           ),
-          const CustomTextFormField(
-            labelText: "AUTO",
+           CustomTextFormField(
+            labelText: local.auto,
             centerContent: true,
             isLabelBold: true,
             isClickable: false,
           ),
           const GapH(h: 1),
-          const TextBuilder(
-            "Vacation request Date",
+           TextBuilder(
+            local.vacationRequestDate,
             isHeader: true,
           ),
           const Row(

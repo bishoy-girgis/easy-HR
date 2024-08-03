@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../Core/constants/app_colors.dart';
 import '../../../Core/services/cache_helper.dart';
 import '../../../Core/widgets/text_builder.dart';
@@ -21,6 +21,7 @@ class VacationTypeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -59,8 +60,8 @@ class VacationTypeWidget extends StatelessWidget {
               ),
               textAlignVertical: TextAlignVertical.center,
               dropdownSearchDecoration: InputDecoration(
-                  label: const TextBuilder(
-                    "Vacation Types",
+                  label:  TextBuilder(
+                    local.vacationTypes,
                     fontSize: 14,
                     maxLines: 2,
                   ),
