@@ -48,7 +48,7 @@
   "annualBalance": "رصيد الأجازة السنويه",
   "compensatoryBalance": "رصيد الأجازة العارضه",
   "basicSalary": "الراتب الاساسي",
-  "salaryDeductions": "ضريبة صرف الراتب",
+  "salaryDeductions": "طريقة صرف الراتب",
   "accountNumber": "رقم الحساب",
   "profileInfo": "معلومات الشخصية",
   "days": "يوم",
@@ -60,7 +60,12 @@
   "vacationTypes": "نوع الإجازات",
   "from": "من",
   "daysBalance": "عدد الأيام",
-  "dayss": "يوم",
+  "dayss": "ايام",
   "auto" : "تلقائى",
-  "createVacation" : "طلب اجازة"
+  "createVacation" : "طلب اجازة",
+  "vacationRequest": "طلب إجازة",
+  "vacationType": "نوع الإجازة",
+  "daysCount": "عدد الأيام",
+  "inReview": "قيد المراجعة",
+  "approved": "موافق"
 }

@@ -53,7 +53,7 @@ class VacationItem extends StatelessWidget {
             mainAxisAlignment:
             MainAxisAlignment.spaceBetween,
             children: [
-              const TextBuilder("Vacation request"),
+               TextBuilder(local.vacationRequest),
               const GapW(w: 4),
               TextBuilder(
                 AppConstants.formatDate(
@@ -67,8 +67,8 @@ class VacationItem extends StatelessWidget {
               const GapW(w: 4),
               TextBuilder(
                   vacation.approved
-                      ? "Approved"
-                      : "in review",
+                      ? local.approved
+                      : local.inReview,
                   color: vacation.approved
                       ? Colors.green.withOpacity(0.7)
                       : Colors.black
@@ -78,23 +78,23 @@ class VacationItem extends StatelessWidget {
           const GapH(h: 2),
           Row(
             children: [
-              TextBuilder("vacation type",
+              TextBuilder(local.vacationType,
                   color:
                   Colors.black.withOpacity(0.5)),
               const GapW(w: 22),
-              const TextBuilder(" : year")
+               TextBuilder("    : ${vacation.VacationName ??vacation.VacationEName }")
             ],
           ),
           const GapH(h: 1),
           Row(
             children: [
-              TextBuilder("Days count",
+              TextBuilder(local.daysCount,
                   color:
                   Colors.black.withOpacity(0.5)),
               const GapW(w: 27),
               TextBuilder(": ${vacation.days}"),
               const GapW(w: 1),
-              TextBuilder("Day/s",
+              TextBuilder(local.dayss,
                   color:
                   Colors.black.withOpacity(0.5)),
             ],
@@ -102,7 +102,7 @@ class VacationItem extends StatelessWidget {
           const GapH(h: 1),
           Row(
             children: [
-              TextBuilder("From   ",
+              TextBuilder("${local.from}   ",
                   color:
                   Colors.black.withOpacity(0.5)),
               TextBuilder(
@@ -110,7 +110,8 @@ class VacationItem extends StatelessWidget {
                     vacation.dateFrom ??
                         "1990-10-01T00:00:00"),
               ),
-              TextBuilder("   To   ",
+              const GapW(w: 12),
+              TextBuilder("   ${local.to}   ",
                   color:
                   Colors.black.withOpacity(0.5)),
               TextBuilder(

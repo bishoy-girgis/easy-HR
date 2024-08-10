@@ -19,10 +19,17 @@ class SelectDateVacation extends StatefulWidget {
 }
 
 class _SelectDateVacationState extends State<SelectDateVacation> {
-  DateTime? fromDate =DateTime.now();
-  DateTime? toDate =DateTime.now();
+  DateTime? fromDate = DateTime.now();
+  DateTime? toDate = DateTime.now();
   int differenceInDays = 1;
   TextEditingController notes = TextEditingController();
+  DateTime initialFromDate = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    initialFromDate = fromDate!;
+  }
 
   void _onFromDateSelected(DateTime date) {
     setState(() {
@@ -41,12 +48,16 @@ class _SelectDateVacationState extends State<SelectDateVacation> {
   }
 
   void _calculateDifference() {
+    if (fromDate != null && toDate != null) {
       setState(() {
-        differenceInDays = toDate!.difference(fromDate!).inDays + 2;
+        if (fromDate == initialFromDate) {
+          differenceInDays = toDate!.difference(fromDate!).inDays + 2;
+        } else {
+          differenceInDays = toDate!.difference(fromDate!).inDays + 1;
+        }
       });
-
+    }
   }
-
 
 
   @override

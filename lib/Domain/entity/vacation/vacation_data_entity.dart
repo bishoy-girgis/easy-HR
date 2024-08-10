@@ -22,6 +22,8 @@ class VacationDataEntity extends Equatable {
     this.approveDate,
     this.notes,
     this.companyId,
+    this.VacationName,
+    this.VacationEName,
   });
 
   int? vacationId;
@@ -44,6 +46,9 @@ class VacationDataEntity extends Equatable {
   String? approveDate;
   String? notes;
   int? companyId;
+  String? VacationName;
+  String? VacationEName;
+
 
   @override
   List<Object?> get props {
@@ -68,6 +73,8 @@ class VacationDataEntity extends Equatable {
       approveDate,
       notes,
       companyId,
+      VacationName,
+      VacationEName
     ];
   }
 }

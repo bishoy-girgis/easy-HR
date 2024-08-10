@@ -26,7 +26,9 @@ class ProfileDataEntity extends Equatable {
       this.joindate, 
       this.contractdate, 
       this.jobname, 
-      this.jobename,});
+      this.jobename,
+  this.empMobile,
+    });
 
   int? empcode;
   String? empname;
@@ -53,6 +55,7 @@ class ProfileDataEntity extends Equatable {
   String? contractdate;
   String? jobname;
   String? jobename;
+  String? empMobile;
 
   @override
   // TODO: implement props
@@ -83,6 +86,7 @@ class ProfileDataEntity extends Equatable {
       contractdate,
       jobname,
       jobename,
+      empMobile,
     ];
   }
 

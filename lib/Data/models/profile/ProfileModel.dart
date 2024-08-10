@@ -28,6 +28,7 @@ class ProfileModel extends ProfileDataEntity {
     super.contractdate,
     super.jobname,
     super.jobename,
+    super.empMobile,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -56,5 +57,6 @@ class ProfileModel extends ProfileDataEntity {
         contractdate: json['contractdate'],
         jobname: json['jobname'],
         jobename: json['jobename'],
+    empMobile: json['empMobile'],
       );
 }

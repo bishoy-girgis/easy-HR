@@ -15,7 +15,7 @@ import '../widgets/vacation_balance_widget.dart';
 import '../widgets/work_hours_widget.dart';
 
 class ProfileView extends StatelessWidget {
-  ProfileView({
+  const ProfileView({
     super.key,
   });
 
@@ -82,7 +82,7 @@ class ProfileView extends StatelessWidget {
                       ),
                       ProfileInfoWidget(
                           text: local.mobileNo,
-                          value: "01280835258",
+                          value: profileData.empMobile??"0000",
                           text2: local.address,
                           value2: profileData.address ?? ""),
                       ProfileInfoWidget(
@@ -136,7 +136,7 @@ class ProfileView extends StatelessWidget {
                           dayNo: "${profileData.basicsalary} ${local.sar}"),
                       VacationBalanceWidget(
                           typeVacation: local.salaryDeductions,
-                          dayNo: "00 ${local.sar}"),
+                          dayNo: "${profileData.paymenttype}"),
                       VacationBalanceWidget(
                           typeVacation: local.accountNumber,
                           dayNo: "${profileData.empBank}"),
