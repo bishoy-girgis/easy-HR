@@ -33,7 +33,6 @@ class AppConstants {
     accessToken = SharedPref.get(key: "accessToken");
     empId = SharedPref.get(key: "empId");
   }
-
   static void updateSettingValues() {
     baseUrl = SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:600";
     branchName = SharedPref.get(key: "branchName") ?? "";

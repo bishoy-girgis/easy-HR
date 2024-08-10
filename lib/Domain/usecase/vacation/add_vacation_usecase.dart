@@ -1,7 +1,5 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../Core/error/faliure.dart';
-import '../../entity/vacation/vacation_data_entity.dart';
+import '../../../Core/error/failure.dart';
 import '../../repositories/vacation/vacations_repository.dart';
 
 class AddVacationUseCase {

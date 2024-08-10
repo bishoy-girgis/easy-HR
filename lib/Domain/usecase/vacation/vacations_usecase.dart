@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:easy_hr/Domain/entity/vacation/vacation_data_entity.dart';
 import 'package:easy_hr/Domain/repositories/vacation/vacations_repository.dart';
 
-import '../../../Core/error/faliure.dart';
+import '../../../Core/error/failure.dart';
 
 class VacationUseCase{
   final VacationsRepository vacationsRepository;

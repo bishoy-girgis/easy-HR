@@ -10,7 +10,6 @@ class ProfileDataSource {
 
   Future<Response> profileData() {
     int empId =SharedPref.get(key: "empId") ;
-    print("empId ${SharedPref.get(key: "empId")}");
     return dio.get(EndPoints.profileData,queryParameters:{
       "empid":empId
     });

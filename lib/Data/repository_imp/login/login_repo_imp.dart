@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../Core/error/faliure.dart';
+import '../../../Core/error/failure.dart';
 import '../../../Domain/entity/user/user_entity.dart';
 import '../../../Domain/repositories/login/login_repository.dart';
 import '../../data_source/login/login_data_source.dart';

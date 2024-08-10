@@ -83,7 +83,6 @@ class VacationCubit extends Cubit<VacationState> {
       debugPrint(error.message);
       emit(VacationErrorState(error));
     }, (r) async {
-      print("response :::  $r");
       emit(AddVacationSuccessState(r));
     });
   }

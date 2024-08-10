@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:easy_hr/Core/error/faliure.dart';
+import 'package:easy_hr/Core/error/failure.dart';
 import 'package:easy_hr/Data/data_source/profile/profile_data_source.dart';
 import 'package:easy_hr/Data/models/profile/ProfileModel.dart';
 import 'package:easy_hr/Domain/entity/profile/profile_data_entity.dart';

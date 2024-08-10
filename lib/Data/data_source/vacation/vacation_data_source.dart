@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart';
 import '../../../Core/constants/end_points.dart';
 import '../../../Core/services/cache_helper.dart';
 
@@ -37,7 +36,7 @@ class VacationDataSource {
         "VacationTypeId": vacationTypeId,
         "DateFrom": dateFrom,
         "DateTo": dateTo,
-        "notes": notes ?? "N\A",
+        "notes": notes,
         "user": user,
         "companyid": companyId,
       },

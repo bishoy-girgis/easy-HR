@@ -1,5 +1,4 @@
 import 'package:easy_hr/Domain/entity/vacation/vacation_type_entity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

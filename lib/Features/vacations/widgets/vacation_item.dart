@@ -82,7 +82,7 @@ class VacationItem extends StatelessWidget {
                   color:
                   Colors.black.withOpacity(0.5)),
               const GapW(w: 22),
-               TextBuilder("    : ${vacation.VacationName ??vacation.VacationEName }")
+               TextBuilder("    : ${vacation.vacationName ??vacation.vacationEName }")
             ],
           ),
           const GapH(h: 1),

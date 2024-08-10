@@ -1,4 +1,4 @@
-import '../../../Core/error/faliure.dart';
+import '../../../Core/error/failure.dart';
 import '../../../Domain/entity/user/user_entity.dart';
 
 abstract class LoginState {}

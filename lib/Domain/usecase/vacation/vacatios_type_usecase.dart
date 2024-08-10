@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../Core/error/faliure.dart';
+import '../../../Core/error/failure.dart';
 import '../../entity/vacation/vacation_type_entity.dart';
 import '../../repositories/vacation/vacations_repository.dart';
 

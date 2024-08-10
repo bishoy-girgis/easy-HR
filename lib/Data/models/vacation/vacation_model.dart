@@ -22,8 +22,8 @@ class VacationModel extends VacationDataEntity {
     super.approveDate,
     super.notes,
     super.companyId,
-    super.VacationName,
-    super.VacationEName,
+    super.vacationName,
+    super.vacationEName,
   });
 
   VacationModel.fromJson(dynamic json) {
@@ -47,8 +47,8 @@ class VacationModel extends VacationDataEntity {
     approveDate = json['ApproveDate'];
     notes = json['Notes'];
     companyId = json['CompanyId'];
-    VacationName = json['VacationName'];
-    VacationEName = json['VacationEName'];
+    vacationName = json['VacationName'];
+    vacationEName = json['VacationEName'];
   }
 
   // Map<String, dynamic> toJson() {

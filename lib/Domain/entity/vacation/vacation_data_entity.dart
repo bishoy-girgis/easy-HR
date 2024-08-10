@@ -22,8 +22,8 @@ class VacationDataEntity extends Equatable {
     this.approveDate,
     this.notes,
     this.companyId,
-    this.VacationName,
-    this.VacationEName,
+    this.vacationName,
+    this.vacationEName,
   });
 
   int? vacationId;
@@ -46,8 +46,8 @@ class VacationDataEntity extends Equatable {
   String? approveDate;
   String? notes;
   int? companyId;
-  String? VacationName;
-  String? VacationEName;
+  String? vacationName;
+  String? vacationEName;
 
 
   @override
@@ -73,8 +73,8 @@ class VacationDataEntity extends Equatable {
       approveDate,
       notes,
       companyId,
-      VacationName,
-      VacationEName
+      vacationName,
+      vacationEName
     ];
   }
 }

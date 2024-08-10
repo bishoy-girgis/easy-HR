@@ -7,7 +7,7 @@ import 'package:easy_hr/Domain/entity/vacation/vacation_type_entity.dart';
 import 'package:easy_hr/Domain/repositories/vacation/vacations_repository.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../Core/error/faliure.dart';
+import '../../../Core/error/failure.dart';
 
 class VacationRepositoryImp implements VacationsRepository {
   final VacationDataSource vacationDataSource;

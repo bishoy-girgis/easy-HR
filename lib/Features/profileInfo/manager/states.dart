@@ -1,5 +1,5 @@
 import 'package:easy_hr/Domain/entity/profile/profile_data_entity.dart';
-import '../../../../Core/error/faliure.dart';
+import '../../../../Core/error/failure.dart';
 
 abstract class ProfileState {}
 

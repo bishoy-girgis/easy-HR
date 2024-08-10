@@ -25,7 +25,7 @@ class Routes {
             builder: (context) => const SettingsView(), settings: routeSettings);
       case PageRouteName.profile:
         return MaterialPageRoute(
-            builder: (context) =>  ProfileView(), settings: routeSettings);
+            builder: (context) =>  const ProfileView(), settings: routeSettings);
       case PageRouteName.vacations:
         return MaterialPageRoute(
             builder: (context) =>  const VacationsView(), settings: routeSettings);
