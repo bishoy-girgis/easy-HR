@@ -8,4 +8,6 @@ class EndPoints {
   static const String vacationTypes = "/api/VacationType";
 
   static const String addVacation = "/api/Empvacation";
+
+  static const String salary = "/api/salary";
 }

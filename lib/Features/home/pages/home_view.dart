@@ -36,11 +36,20 @@ class HomeView extends StatelessWidget {
                 ),
                 CategoryWidget(
                   onTap: () {
-                    navigatorKey.currentState?.pushNamed(PageRouteName.vacations);
+                    navigatorKey.currentState
+                        ?.pushNamed(PageRouteName.vacations);
                   },
                   categoryName: local.vacations,
                   image: true,
                   imageIcon: const AssetImage("assets/images/beach.png"),
+                ),
+                CategoryWidget(
+                  onTap: () {
+                    navigatorKey.currentState?.pushNamed(PageRouteName.salary);
+                  },
+                  categoryName: local.salaries,
+                  image: true,
+                  imageIcon: const AssetImage("assets/images/salary.png"),
                 ),
                 CategoryWidget(
                   categoryName: local.loans,
@@ -51,11 +60,6 @@ class HomeView extends StatelessWidget {
                   categoryName: local.financialDues,
                   image: true,
                   imageIcon: const AssetImage("assets/images/recipient.png"),
-                ),
-                CategoryWidget(
-                  categoryName: local.salaries,
-                  image: true,
-                  imageIcon: const AssetImage("assets/images/salary.png"),
                 ),
                 CategoryWidget(
                   categoryName: local.attendance,

@@ -81,7 +81,7 @@ class VacationItem extends StatelessWidget {
               TextBuilder(local.vacationType,
                   color:
                   Colors.black.withOpacity(0.5)),
-              const GapW(w: 22),
+              const GapW(w: 18),
                TextBuilder("    : ${vacation.vacationName ??vacation.vacationEName }")
             ],
           ),
@@ -110,7 +110,7 @@ class VacationItem extends StatelessWidget {
                     vacation.dateFrom ??
                         "1990-10-01T00:00:00"),
               ),
-              const GapW(w: 12),
+              const GapW(w: 8),
               TextBuilder("   ${local.to}   ",
                   color:
                   Colors.black.withOpacity(0.5)),
