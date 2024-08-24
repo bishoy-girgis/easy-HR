@@ -253,8 +253,8 @@ class _SalaryWidgetState extends State<SalaryWidget> {
                         Icon(Icons.arrow_drop_up_outlined,
                             color: Colors.white, size: 20.r),
                         const GapW(w: 1),
-                        const TextBuilder(
-                          "less.",
+                         TextBuilder(
+                          local.less,
                           color: Colors.white,
                           fontSize: 11,
                         )
@@ -266,8 +266,8 @@ class _SalaryWidgetState extends State<SalaryWidget> {
                         Icon(Icons.arrow_drop_down,
                             color: Colors.white, size: 20.r),
                         const GapW(w: 1),
-                        const TextBuilder(
-                          "more info.",
+                         TextBuilder(
+                          local.moreInfo,
                           color: Colors.white,
                           fontSize: 11,
                         )

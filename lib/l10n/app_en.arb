@@ -3,9 +3,9 @@
     "arLanguage": "Arabic",
     "@language": {
     "description": "The current Language"
-    } , 
+    } ,
     "welcome": "Welcome Mr",
-       
+
     "helloWorld": "Hello World!",
     "@helloWorld": {
     "description": "A programmer greeting"
@@ -23,8 +23,8 @@
     "passwordHint": "Enter your Password",
     "login": "Login",
     "nameHint": "Enter your name",
-    "login_username_required":"The login username is incorrect or does not exist" , 
-    "login_password_required":"The login Password is incorrect or does not exist" , 
+    "login_username_required":"The login username is incorrect or does not exist" ,
+    "login_password_required":"The login Password is incorrect or does not exist" ,
     "email": "E-mail",
     "emailHint": "Enter your email",
     "dateOfBirth": "Birth Date",
@@ -102,5 +102,7 @@
     "social" : "Social",
     "injury" : "Injury",
     "medical" : "Medical",
-    "attendanceDeparturePenalties" : "Attendance and Departure Penalties"
+    "attendanceDeparturePenalties" : "Attendance and Departure Penalties",
+    "moreInfo" : "More Info.",
+    "less" : "Less"
 }

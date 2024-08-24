@@ -90,5 +90,7 @@
   "social" : "اجتماعي",
   "injury" : "إصابة",
   "medical" : "طبي",
-  "attendanceDeparturePenalties" : "جزاءات الحضور والانصراف"
+  "attendanceDeparturePenalties" : "جزاءات الحضور والانصراف",
+  "moreInfo" : "مزيد من المعلومات",
+  "less" : "أقل"
 }
