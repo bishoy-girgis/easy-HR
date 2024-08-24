@@ -10,7 +10,7 @@ class SalaryDataSource {
 
   Future<Response> salaryData() {
     int empId =SharedPref.get(key: "empId") ;
-    return dio.get(EndPoints.profileData,queryParameters:{
+    return dio.get(EndPoints.salary,queryParameters:{
       "empid":empId
     });
   }
