@@ -8,7 +8,8 @@ import '../../../Core/widgets/text_builder.dart';
 
 class LoanItem extends StatelessWidget {
   LoanDataEntity loan;
-   LoanItem({super.key,required this.loan});
+
+  LoanItem({super.key, required this.loan});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,11 @@ class LoanItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            children: [ Icon(Icons.money,size: 24.sp), const GapW(w: 4), TextBuilder("${loan.loanNumber}")],
+            children: [
+              Icon(Icons.money, size: 24.sp),
+              const GapW(w: 4),
+              TextBuilder("${loan.loanNumber}")
+            ],
           ),
           const GapH(h: 1),
           Row(
@@ -52,8 +57,8 @@ class LoanItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
-                child:
-                    TextBuilder(local.loanValue, color: Colors.black.withOpacity(0.5)),
+                child: TextBuilder(local.loanValue,
+                    color: Colors.black.withOpacity(0.5)),
               ),
               TextBuilder("    : ${loan.loanValue}")
             ],
@@ -63,8 +68,8 @@ class LoanItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
-                child:
-                TextBuilder(local.paid, color: Colors.black.withOpacity(0.5)),
+                child: TextBuilder(local.paid,
+                    color: Colors.black.withOpacity(0.5)),
               ),
               TextBuilder("    : ${loan.paid}")
             ],
@@ -81,7 +86,6 @@ class LoanItem extends StatelessWidget {
             ],
           ),
           const GapH(h: 2),
-
         ],
       ),
     );

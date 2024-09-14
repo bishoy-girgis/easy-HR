@@ -35,7 +35,7 @@ class LoanView extends StatelessWidget {
           color: AppColors.whiteColor,
         ),
         child: BlocProvider(
-          create: (context) =>LoanCubit()..getLoan(),
+          create: (context) => LoanCubit()..getLoan(),
           child: BlocConsumer<LoanCubit, LoanState>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -49,7 +49,7 @@ class LoanView extends StatelessWidget {
                       ),
                     );
                   },
-                  itemCount:  state.loanDataEntity.length,
+                  itemCount: state.loanDataEntity.length,
                 );
               } else if (state is LoanErrorState) {
                 debugPrint(state.failure.message);
@@ -60,7 +60,7 @@ class LoanView extends StatelessWidget {
                 return ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   padding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return const ProfileShimmerWidget();
