@@ -8,9 +8,13 @@ class SalaryDataWidget extends StatelessWidget {
   String value;
   String text2;
   String value2;
+  Color? color1 = Colors.white;
+  Color? color2 = Colors.white;
 
   SalaryDataWidget({
     super.key,
+    this.color1,
+    this.color2,
     required this.text,
     required this.value,
     required this.text2,
@@ -23,6 +27,7 @@ class SalaryDataWidget extends StatelessWidget {
       children: [
         Expanded(
           child: Card(
+            color: color1,
             shadowColor: Colors.black,
             elevation: 5,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
@@ -47,6 +52,7 @@ class SalaryDataWidget extends StatelessWidget {
         ),
         Expanded(
           child: Card(
+            color: color2,
             shadowColor: Colors.black,
             elevation: 5,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
