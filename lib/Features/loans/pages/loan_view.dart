@@ -1,19 +1,27 @@
-import 'package:easy_hr/Core/widgets/gap.dart';
+import 'package:easy_hr/Features/loans/widgets/loan_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../Core/constants/app_colors.dart';
+import '../../../Core/constants/app_constants.dart';
+import '../../../Core/widgets/gap.dart';
 import '../../../Core/widgets/text_builder.dart';
+import '../../profileInfo/widgets/profile_shimmer_widget.dart';
+import '../manager/cubit.dart';
+import '../manager/states.dart';
 
 class LoanView extends StatelessWidget {
   const LoanView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const TextBuilder(
-          "Loans",
+        title: TextBuilder(
+          local.loans,
           color: AppColors.whiteColor,
         ),
       ),
@@ -24,76 +32,45 @@ class LoanView extends StatelessWidget {
         margin: EdgeInsets.all(12.sp),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          color: Colors.grey,
+          color: AppColors.whiteColor,
         ),
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.r),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.all(4.sp),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20.r),
-                                topLeft: Radius.circular(20.r)),
-                            color: AppColors.primaryColorGrey,
-                          ),
-                          child: const Center(
-                            child: TextBuilder("Total",
-                                color: Colors.white, isHeader: true),
-                          ),
-                        ),
+        child: BlocProvider(
+          create: (context) =>LoanCubit()..getLoan(),
+          child: BlocConsumer<LoanCubit, LoanState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is LoanSuccessState) {
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.all(5.sp),
+                      child: LoanItem(
+                        loan: state.loanDataEntity[index],
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextBuilder("Loans :"),
-                      TextBuilder("10000", isHeader: true),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.blackColor,
-                            borderRadius: BorderRadius.circular(18.r)),
-                        height: 24.h,
-                        width: 2.w,
-                      ),
-                      TextBuilder("Paid :"),
-                      TextBuilder("250", isHeader: true),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 11.w,vertical: 2.h),
-                    child: const Divider(
-                      thickness: 2.5,
-                      color: AppColors.blackColor,
-                    ),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextBuilder("Net :"),
-                      TextBuilder("9750", isHeader: true),
-                    ],
-                  ),
-                  SizedBox(height: 10.h),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(18),color: Colors.white),
-            )
-          ],
+                    );
+                  },
+                  itemCount:  state.loanDataEntity.length,
+                );
+              } else if (state is LoanErrorState) {
+                debugPrint(state.failure.message);
+                return Center(
+                  child: TextBuilder("Sorry ${state.failure.message}"),
+                );
+              } else if (state is LoanLoadingState) {
+                return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return const ProfileShimmerWidget();
+                  },
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
         ),
       ),
     );

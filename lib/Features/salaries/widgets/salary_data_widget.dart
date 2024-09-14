@@ -23,14 +23,15 @@ class SalaryDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         Expanded(
           child: Card(
             color: color1,
             shadowColor: Colors.black,
             elevation: 5,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.r)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -55,7 +56,9 @@ class SalaryDataWidget extends StatelessWidget {
             color: color2,
             shadowColor: Colors.black,
             elevation: 5,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.r),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

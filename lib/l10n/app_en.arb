@@ -105,5 +105,9 @@
     "medical" : "Medical",
     "attendanceDeparturePenalties" : "Attendance and Departure Penalties",
     "moreInfo" : "More Info.",
-    "less" : "Less"
+    "less" : "Less",
+    "loanRequest" : "Loan Request",
+    "loanValue" : "Loan Value",
+    "paid" : "Paid",
+    "remains" : "Remains"
 }

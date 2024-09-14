@@ -93,5 +93,10 @@
   "medical" : "طبي",
   "attendanceDeparturePenalties" : "جزاءات الحضور والانصراف",
   "moreInfo" : "مزيد من المعلومات",
-  "less" : "أقل"
+  "less" : "أقل",
+  "loanRequest" : "طلب السلفه",
+  "loanValue" : "قيمه السلفه",
+  "paid" : "مدفوع",
+  "remains" : "الباقي"
+
 }
