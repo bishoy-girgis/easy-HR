@@ -1,4 +1,5 @@
 import 'package:easy_hr/Core/config/page_route_name.dart';
+import 'package:easy_hr/Features/financial/pages/financial_view.dart';
 import 'package:easy_hr/Features/home/pages/home_view.dart';
 import 'package:easy_hr/Features/loans/pages/loan_view.dart';
 import 'package:easy_hr/Features/salaries/pages/salary_view.dart';
@@ -40,6 +41,9 @@ class Routes {
       case PageRouteName.loan:
         return MaterialPageRoute(
             builder: (context) =>  const LoanView(), settings: routeSettings);
+      case PageRouteName.financial:
+        return MaterialPageRoute(
+            builder: (context) =>  const FinancialView(), settings: routeSettings);
       default:
         return MaterialPageRoute<dynamic>(
             builder: (context) => const SplashView(), settings: routeSettings);

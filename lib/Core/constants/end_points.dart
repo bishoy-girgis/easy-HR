@@ -13,4 +13,6 @@ class EndPoints {
 
   static const String loan = "/api/EmployeesLoans";
 
+  static const String financial = "/api/EmpFinancial";
+
 }

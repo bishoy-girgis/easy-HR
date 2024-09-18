@@ -60,6 +60,9 @@ class HomeView extends StatelessWidget {
                   imageIcon: const AssetImage("assets/images/loan.png"),
                 ),
                 CategoryWidget(
+                  onTap: () {
+                    navigatorKey.currentState?.pushNamed(PageRouteName.financial);
+                  },
                   categoryName: local.financialDues,
                   image: true,
                   imageIcon: const AssetImage("assets/images/recipient.png"),
