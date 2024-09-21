@@ -57,10 +57,10 @@ class FinancialItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
-                child: TextBuilder(local.loanValue,
+                child: TextBuilder(local.value,
                     color: Colors.black.withOpacity(0.5)),
               ),
-              TextBuilder("    : ${financial.amountVal}")
+              TextBuilder(": ${financial.amountVal}")
             ],
           ),
           const GapH(h: 1),
@@ -68,10 +68,10 @@ class FinancialItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
-                child: TextBuilder( "Allow period",
+                child: TextBuilder( local.allowPeriod,
                     color: Colors.black.withOpacity(0.5)),
               ),
-              TextBuilder("    : ${financial.allowPeriod}")
+              TextBuilder(": ${financial.allowPeriod}")
             ],
           ),
           const GapH(h: 1),
@@ -79,10 +79,10 @@ class FinancialItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
-                child: TextBuilder(local.remains,
+                child: TextBuilder(local.payment,
                     color: Colors.black.withOpacity(0.5)),
               ),
-              TextBuilder("    : ${400}")
+              TextBuilder(": ${financial.manualPaid == true ? local.manually : local.cashSalary}")
             ],
           ),
           const GapH(h: 2),

@@ -97,6 +97,11 @@
   "loanRequest" : "طلب السلفه",
   "loanValue" : "قيمه السلفه",
   "paid" : "مدفوع",
-  "remains" : "الباقي"
+  "remains" : "الباقي",
+  "value": "القيمة",
+  "allowPeriod": "فترة السماح",
+  "payment": "الدفع",
+  "manually": "يدويًا",
+  "cashSalary": "النقد مع الراتب"
 
 }

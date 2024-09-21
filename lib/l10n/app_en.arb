@@ -109,5 +109,10 @@
     "loanRequest" : "Loan Request",
     "loanValue" : "Loan Value",
     "paid" : "Paid",
-    "remains" : "Remains"
+    "remains" : "Remains",
+    "value" : "Value",
+    "allowPeriod" : "Allow Period",
+    "payment" : "Payment",
+    "manually": "Manually",
+    "cashSalary": "Cash with salary"
 }
