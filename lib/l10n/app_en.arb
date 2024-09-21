@@ -114,5 +114,8 @@
     "allowPeriod" : "Allow Period",
     "payment" : "Payment",
     "manually": "Manually",
-    "cashSalary": "Cash with salary"
+    "cashSalary": "Cash with salary",
+    "eligibility": "Eligibility",
+    "deduction" : "Deduction",
+    "type" : "Type"
 }

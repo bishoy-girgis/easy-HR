@@ -102,6 +102,8 @@
   "allowPeriod": "فترة السماح",
   "payment": "الدفع",
   "manually": "يدويًا",
-  "cashSalary": "النقد مع الراتب"
-
+  "cashSalary": "النقد مع الراتب",
+  "eligibility": "استحقاق",
+  "deduction" : "استقطاع ",
+  "type" : "النوع"
 }

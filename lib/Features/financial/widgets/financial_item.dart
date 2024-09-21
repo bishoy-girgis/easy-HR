@@ -57,6 +57,17 @@ class FinancialItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.35,
+                child: TextBuilder(local.type,
+                    color: Colors.black.withOpacity(0.5)),
+              ),
+              TextBuilder(": ${financial.fType == 2 ? local.deduction : local.eligibility}")
+            ],
+          ),
+          const GapH(h: 1),
+          Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.35,
                 child: TextBuilder(local.value,
                     color: Colors.black.withOpacity(0.5)),
               ),
