@@ -56,7 +56,7 @@ class FinancialItem extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.35,
                 child: TextBuilder(local.value,
                     color: Colors.black.withOpacity(0.5)),
               ),
@@ -67,7 +67,7 @@ class FinancialItem extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.35,
                 child: TextBuilder( local.allowPeriod,
                     color: Colors.black.withOpacity(0.5)),
               ),
@@ -78,7 +78,7 @@ class FinancialItem extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.35,
                 child: TextBuilder(local.payment,
                     color: Colors.black.withOpacity(0.5)),
               ),
