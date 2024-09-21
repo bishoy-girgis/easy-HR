@@ -11,7 +11,8 @@ import 'header_salary_widgrt.dart';
 
 class SalaryWidget extends StatefulWidget {
   SalaryDataEntity salary;
-   SalaryWidget({super.key,required this.salary});
+
+  SalaryWidget({super.key, required this.salary});
 
   @override
   State<SalaryWidget> createState() => _SalaryWidgetState();
@@ -36,12 +37,12 @@ class _SalaryWidgetState extends State<SalaryWidget> {
             ),
             child: Row(
               children: [
-                 TextBuilder(
+                TextBuilder(
                   "-  ${local.month}",
                   color: Colors.white,
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.38),
-                 TextBuilder(
+                TextBuilder(
                   "${widget.salary.monthYear}",
                   color: Colors.white,
                 ),
@@ -58,14 +59,14 @@ class _SalaryWidgetState extends State<SalaryWidget> {
                 SalaryDataWidget(
                     text: local.basic,
                     value: "${widget.salary.basicSal}",
-                    text2:  local.awards,
+                    text2: local.awards,
                     value2: "${widget.salary.awards}"),
                 const GapH(h: 1),
                 SalaryDataWidget(
-                    text:  local.deductions,
+                    text: local.deductions,
                     value: "${widget.salary.deductions}",
                     color2: Colors.green,
-                    text2:  local.net,
+                    text2: local.net,
                     value2: "${widget.salary.netSalary}"),
               ],
             ),
@@ -84,76 +85,92 @@ class _SalaryWidgetState extends State<SalaryWidget> {
                         color: Colors.black,
                         thickness: 3,
                       ),
-                      HeaderSalaryWidget(title: local.awards,color: AppColors.secondColorBlue),
+                      HeaderSalaryWidget(
+                          title: local.awards,
+                          color: AppColors.secondColorBlue),
                       SalaryDataWidget(
-                          text:  local.basic,
+                          text: local.basic,
                           value: "${widget.salary.basicSal}",
-                          text2:  local.insurance,
+                          text2: local.insurance,
                           value2: "${widget.salary.insurSalary}"),
                       SalaryDataWidget(
-                          text:  local.allowances,
+                          text: local.allowances,
                           value: "${widget.salary.allowances}",
-                          text2:  local.bonuses,
+                          text2: local.bonuses,
                           value2: "${widget.salary.awards}"),
                       SalaryDataWidget(
-                          text:  local.vacationDays,
+                          text: local.vacationDays,
                           value: "${widget.salary.holidayNum}",
-                          text2:  local.regularHours,
+                          text2: local.regularHours,
                           value2: "${widget.salary.hourRate}"),
                       SalaryDataWidget(
-                          text:  local.workingHours,
+                          text: local.workingHours,
                           value: "${widget.salary.workHours}",
-                          text2:  local.workingDays,
+                          text2: local.workingDays,
                           value2: "${widget.salary.workHours}"),
-                      HeaderSalaryWidget(title: local.rateSalary,color: AppColors.secondColorBlue),
+                      HeaderSalaryWidget(
+                          title: local.rateSalary,
+                          color: AppColors.secondColorBlue),
                       SalaryDataWidget(
-                          text:  local.daily,
+                          text: local.daily,
                           value: "${widget.salary.dayRate}",
-                          text2:  local.hourly,
+                          text2: local.hourly,
                           value2: "${widget.salary.hourRate}"),
-                      HeaderSalaryWidget(title: local.overtimeHours,color: AppColors.secondColorBlue),
+                      HeaderSalaryWidget(
+                          title: local.overtimeHours,
+                          color: AppColors.secondColorBlue),
                       SalaryDataWidget(
                           text: "150%",
                           value: "${widget.salary.oneHalfOverHours}",
                           text2: "200%",
                           value2: "${widget.salary.doubleOverHours}"),
-                      HeaderSalaryWidget(title: local.overtimePay,color: AppColors.secondColorBlue),
+                      HeaderSalaryWidget(
+                          title: local.overtimePay,
+                          color: AppColors.secondColorBlue),
 
                       SalaryDataWidget(
                           text: "150%",
                           value: "${widget.salary.oneHalfOverHoursSal}",
                           text2: "200%",
                           value2: "${widget.salary.doubleOverHoursSal}"),
-                       Divider(
+                      Divider(
                         height: 12.h,
                         color: Colors.black,
-                         thickness: 3,
+                        thickness: 3,
                       ),
-                      HeaderSalaryWidget(title: local.deductions,color: AppColors.redColor),
+                      HeaderSalaryWidget(
+                          title: local.deductions, color: AppColors.redColor),
 
                       SalaryDataWidget(
-                          text:  local.loans,
+                          text: local.loans,
                           value: "${widget.salary.loans}",
-                          text2:  local.penalty,
+                          text2: local.penalty,
                           value2: "${widget.salary.loans}"),
-                      HeaderSalaryWidget(title: local.insurance,color: AppColors.redColor),
+                      HeaderSalaryWidget(
+                          title: local.insurance, color: AppColors.redColor),
 
                       SalaryDataWidget(
-                          text:  local.social,
+                          text: local.social,
                           value: "${widget.salary.socialInsurSal}",
-                          text2:  local.injury,
+                          text2: local.injury,
                           value2: "${widget.salary.workInjurSal}"),
-                      SalaryDataWidget(
-                          text:  local.medical,
-                          value: "${widget.salary.healthInsurance}",
-                          text2:  local.social,
-                          value2: "${widget.salary.socialInsurSal}"),
-                      HeaderSalaryWidget(title: local.attendanceDeparturePenalties,color: AppColors.redColor),
+                      salaryWidgetOneItem(
+                        text: local.medical,
+                        value: "${widget.salary.healthInsurance}",
+                      ),
+                      // SalaryDataWidget(
+                      //     text:  local.medical,
+                      //     value: "${widget.salary.healthInsurance}",
+                      //     text2:  "",
+                      //     value2: ""),
+                      HeaderSalaryWidget(
+                          title: local.attendanceDeparturePenalties,
+                          color: AppColors.redColor),
 
                       SalaryDataWidget(
-                          text:  local.balance,
+                          text: local.balance,
                           value: "${widget.salary.attendDeductsV}",
-                          text2:  local.days,
+                          text2: local.days,
                           value2: "${widget.salary.attendDeductsD}"),
                       const GapH(h: 1),
                     ],
@@ -181,7 +198,7 @@ class _SalaryWidgetState extends State<SalaryWidget> {
                         Icon(Icons.arrow_drop_up_outlined,
                             color: Colors.white, size: 20.r),
                         const GapW(w: 1),
-                         TextBuilder(
+                        TextBuilder(
                           local.less,
                           color: Colors.white,
                           fontSize: 11,
@@ -194,7 +211,7 @@ class _SalaryWidgetState extends State<SalaryWidget> {
                         Icon(Icons.arrow_drop_down,
                             color: Colors.white, size: 20.r),
                         const GapW(w: 1),
-                         TextBuilder(
+                        TextBuilder(
                           local.moreInfo,
                           color: Colors.white,
                           fontSize: 11,
@@ -205,6 +222,41 @@ class _SalaryWidgetState extends State<SalaryWidget> {
           ),
         ],
       ),
+    );
+  }
+
+  salaryWidgetOneItem(
+      {String? text, String? value, Color? color = Colors.white}) {
+    return Row(
+      children: [
+        Expanded(
+          child: Card(
+            color: color,
+            shadowColor: Colors.black,
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.r)),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  TextBuilder(
+                    "$text :",
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: TextBuilder(
+                        "$value",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Expanded(child: Container())
+      ],
     );
   }
 }

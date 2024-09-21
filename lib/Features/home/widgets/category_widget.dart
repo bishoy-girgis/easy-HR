@@ -26,8 +26,8 @@ class CategoryWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
           width: double.infinity,
-          margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
+          margin: EdgeInsets.symmetric(horizontal: 14.w, vertical: 7.h),
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 7.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: AppColors.whiteColor,

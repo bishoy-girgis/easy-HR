@@ -25,7 +25,7 @@ class _HomeViewHeaderCardState extends State<HomeViewHeaderCard> {
   Widget build(BuildContext context) {
     return Container(
       padding:  EdgeInsets.all(10.sp),
-      margin:  EdgeInsets.all(10.sp),
+      margin:  EdgeInsets.symmetric(horizontal: 6.w,vertical: 8.h),
       width: double.infinity,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),

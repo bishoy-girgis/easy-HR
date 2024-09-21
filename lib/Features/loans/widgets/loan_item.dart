@@ -1,3 +1,4 @@
+import 'package:easy_hr/Core/constants/app_colors.dart';
 import 'package:easy_hr/Domain/entity/loan/loans_data_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,12 +35,17 @@ class LoanItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(Icons.money, size: 24.sp),
-              const GapW(w: 4),
-              TextBuilder("${loan.loanNumber}")
-            ],
+          Container(
+            padding: EdgeInsets.all(6.sp),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r),color:
+            AppColors.primaryColorGrey),
+            child: Row(
+              children: [
+                Icon(Icons.money, size: 24.sp,color: AppColors.whiteColor,),
+                const GapW(w: 4),
+                TextBuilder("${loan.loanNumber}",color: AppColors.whiteColor,)
+              ],
+            ),
           ),
           const GapH(h: 1),
           Row(

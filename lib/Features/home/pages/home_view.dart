@@ -1,7 +1,9 @@
+import 'package:easy_hr/Core/config/my_theme.dart';
 import 'package:easy_hr/Core/config/page_route_name.dart';
 import 'package:easy_hr/Core/extentions/extentions.dart';
 import 'package:easy_hr/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../Core/constants/app_constants.dart';
 import '../../../Core/widgets/gap.dart';
 import '../../login/widgets/change_language.dart';
@@ -19,13 +21,13 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding:  EdgeInsets.symmetric(horizontal: 10.w ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HomeViewHeaderCard(name: AppConstants.userName),
-                const GapH(h: 1),
+                const GapH(h: 1.5),
                 CategoryWidget(
                   onTap: () {
                     navigatorKey.currentState?.pushNamed(PageRouteName.profile);
@@ -45,14 +47,6 @@ class HomeView extends StatelessWidget {
                 ),
                 CategoryWidget(
                   onTap: () {
-                    navigatorKey.currentState?.pushNamed(PageRouteName.salary);
-                  },
-                  categoryName: local.salaries,
-                  image: true,
-                  imageIcon: const AssetImage("assets/images/salary.png"),
-                ),
-                CategoryWidget(
-                  onTap: () {
                     navigatorKey.currentState?.pushNamed(PageRouteName.loan);
                   },
                   categoryName: local.loans,
@@ -66,6 +60,14 @@ class HomeView extends StatelessWidget {
                   categoryName: local.financialDues,
                   image: true,
                   imageIcon: const AssetImage("assets/images/recipient.png"),
+                ),
+                CategoryWidget(
+                  onTap: () {
+                    navigatorKey.currentState?.pushNamed(PageRouteName.salary);
+                  },
+                  categoryName: local.salaries,
+                  image: true,
+                  imageIcon: const AssetImage("assets/images/salary.png"),
                 ),
                 CategoryWidget(
                   categoryName: local.attendance,
