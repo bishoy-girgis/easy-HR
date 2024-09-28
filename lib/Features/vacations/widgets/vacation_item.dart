@@ -123,7 +123,6 @@ class VacationItem extends StatelessWidget {
                   ),
                 ],
               ),
-
               const GapW(w: 8),
               Row(
                 children: [

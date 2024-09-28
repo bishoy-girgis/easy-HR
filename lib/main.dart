@@ -40,8 +40,7 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider(
               create: (context) => LanguageProvider(),
             ),
-            BlocProvider(
-                create: (context) =>VacationCubit()),
+            BlocProvider(create: (context) => VacationCubit()),
           ],
           child: Builder(builder: (context) {
             var languagesProvider = Provider.of<LanguageProvider>(context);

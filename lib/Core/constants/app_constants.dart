@@ -33,6 +33,7 @@ class AppConstants {
     accessToken = SharedPref.get(key: "accessToken");
     empId = SharedPref.get(key: "empId");
   }
+
   static void updateSettingValues() {
     baseUrl = SharedPref.get(key: "baseUrl") ?? "http://95.216.193.252:600";
     branchName = SharedPref.get(key: "branchName") ?? "";
@@ -40,10 +41,11 @@ class AppConstants {
     taxNumber = SharedPref.get(key: "taxNumber") ?? "";
     notes = SharedPref.get(key: "notes") ?? "";
   }
+
   static String formatDate(String dateTimeString) {
     DateTime dateTime = DateTime.parse(dateTimeString);
-    String local = SharedPref.get(key: 'languageCode') ?? 'ar' ;
-    DateFormat dateFormat = DateFormat('dd/MM/yyyy',local);
+    String local = SharedPref.get(key: 'languageCode') ?? 'ar';
+    DateFormat dateFormat = DateFormat('dd/MM/yyyy', local);
     return dateFormat.format(dateTime);
   }
 }

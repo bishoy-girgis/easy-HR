@@ -106,6 +106,7 @@ class GlobalMethods {
   ) {
     return navigatorKey.currentState!.pop();
   }
+
   static navigateTo(context, Widget screen) {
     Navigator.of(context).push(
       MaterialPageRoute(
