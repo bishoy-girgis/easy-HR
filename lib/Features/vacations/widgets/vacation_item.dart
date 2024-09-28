@@ -70,7 +70,7 @@ class VacationItem extends StatelessWidget {
                       ? local.approved
                       : local.inReview,
                   color: vacation.approved
-                      ? Colors.green.withOpacity(0.7)
+                      ? Colors.green[900]
                       : Colors.black
                       .withOpacity(0.7)),
             ],
@@ -80,7 +80,7 @@ class VacationItem extends StatelessWidget {
             children: [
               TextBuilder(local.vacationType,
                   color:
-                  Colors.black.withOpacity(0.5)),
+                  Colors.black.withOpacity(0.5),),
               const GapW(w: 18),
                TextBuilder("    : ${vacation.vacationName ??vacation.vacationEName }")
             ],

@@ -28,7 +28,7 @@ class _HomeViewHeaderCardState extends State<HomeViewHeaderCard> {
       margin:  EdgeInsets.symmetric(horizontal: 6.w,vertical: 8.h),
       width: double.infinity,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(8.r),
           color: AppColors.whiteColor,
           boxShadow: const [
             BoxShadow(
