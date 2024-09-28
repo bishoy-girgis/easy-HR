@@ -78,20 +78,25 @@ class VacationItem extends StatelessWidget {
           const GapH(h: 2),
           Row(
             children: [
-              TextBuilder(local.vacationType,
-                  color:
-                  Colors.black.withOpacity(0.5),),
-              const GapW(w: 18),
-               TextBuilder("    : ${vacation.vacationName ??vacation.vacationEName }")
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                child: TextBuilder(local.vacationType,
+                    color:
+                    Colors.black.withOpacity(0.5),),
+              ),
+               TextBuilder(": ${vacation.vacationName ??vacation.vacationEName }")
             ],
           ),
           const GapH(h: 1),
           Row(
             children: [
-              TextBuilder(local.daysCount,
-                  color:
-                  Colors.black.withOpacity(0.5)),
-              const GapW(w: 27),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+
+                child: TextBuilder(local.daysCount,
+                    color:
+                    Colors.black.withOpacity(0.5)),
+              ),
               TextBuilder(": ${vacation.days}"),
               const GapW(w: 1),
               TextBuilder(local.dayss,
@@ -102,23 +107,41 @@ class VacationItem extends StatelessWidget {
           const GapH(h: 1),
           Row(
             children: [
-              TextBuilder("${local.from}   ",
-                  color:
-                  Colors.black.withOpacity(0.5)),
-              TextBuilder(
-                AppConstants.formatDate(
-                    vacation.dateFrom ??
-                        "1990-10-01T00:00:00"),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.1,
+
+                    child: TextBuilder(local.from,
+                        color:
+                        Colors.black.withOpacity(0.5)),
+                  ),
+                  TextBuilder(
+                    AppConstants.formatDate(
+                        vacation.dateFrom ??
+                            "1990-10-01T00:00:00"),
+                  ),
+                ],
               ),
+
               const GapW(w: 8),
-              TextBuilder("   ${local.to}   ",
-                  color:
-                  Colors.black.withOpacity(0.5)),
-              TextBuilder(
-                AppConstants.formatDate(
-                    vacation.dateTo ??
-                        "1990-10-01T00:00:00"),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.1,
+
+                    child: TextBuilder(local.to,
+                        color:
+                        Colors.black.withOpacity(0.5)),
+                  ),
+                  TextBuilder(
+                    AppConstants.formatDate(
+                        vacation.dateTo ??
+                            "1990-10-01T00:00:00"),
+                  ),
+                ],
               ),
+
             ],
           ),
         ],

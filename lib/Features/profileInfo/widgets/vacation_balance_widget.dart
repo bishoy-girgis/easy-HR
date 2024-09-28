@@ -16,13 +16,13 @@ class VacationBalanceWidget extends StatelessWidget {
       elevation: 5,
       margin: EdgeInsets.symmetric(vertical: 4.h),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16)),
+          borderRadius: BorderRadius.circular(8)),
       child: Container(
         padding: EdgeInsets.all(8.sp),
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: AppColors.whiteColor.withOpacity(0.85),
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.whiteColor.withOpacity(0.4),
         ),
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,

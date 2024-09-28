@@ -18,13 +18,13 @@ class WorkHoursWidget extends StatelessWidget {
       elevation: 5,
       margin: EdgeInsets.symmetric(vertical: 4.h),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16)),
+          borderRadius: BorderRadius.circular(8)),
       child: Container(
         padding: EdgeInsets.all(8.sp),
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: AppColors.whiteColor.withOpacity(0.85),
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.whiteColor.withOpacity(0.4),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,12 +32,12 @@ class WorkHoursWidget extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(3.sp),
+                  padding: EdgeInsets.symmetric(vertical: 3.h,horizontal: 5.w),
                   decoration: BoxDecoration(
                       border: Border.all(
                           color: AppColors.primaryColorGrey,
                           width: 2),
-                      borderRadius: BorderRadius.circular(16)),
+                      borderRadius: BorderRadius.circular(8)),
                   child:  TextBuilder(
                     shiftNo,
                     fontSize: 16,

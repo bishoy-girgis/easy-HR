@@ -14,7 +14,8 @@ class TitleProfileWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(3.sp),
+          margin: EdgeInsets.symmetric(vertical: 4.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 6.h),
           decoration: BoxDecoration(
             color: AppColors.primaryColorGrey.withOpacity(0.85),
             borderRadius: BorderRadius.circular(8),

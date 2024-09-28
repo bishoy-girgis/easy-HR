@@ -42,7 +42,8 @@ class AppConstants {
   }
   static String formatDate(String dateTimeString) {
     DateTime dateTime = DateTime.parse(dateTimeString);
-    DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+    String local = SharedPref.get(key: 'languageCode') ?? 'ar' ;
+    DateFormat dateFormat = DateFormat('dd/MM/yyyy',local);
     return dateFormat.format(dateTime);
   }
 }

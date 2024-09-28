@@ -32,14 +32,14 @@ class ProfileItemData extends StatelessWidget {
               TextBuilder(
                 profileData.empname ?? profileData.empename ?? "",
                 isHeader: true,
-                fontSize: 17,
+                fontSize: 18,
                 color: AppColors.primaryColorGrey,
               ),
               const GapW(w: 20),
               TextBuilder(
                 "${local.employeeCode} : ${profileData.empcode}",
                 isHeader: true,
-                fontSize: 17,
+                fontSize: 18,
                 color: AppColors.primaryColorGrey,
               ),
             ],
@@ -47,7 +47,7 @@ class ProfileItemData extends StatelessWidget {
           Divider(
             color: AppColors.primaryColorGrey,
             thickness: 2,
-            height: 15.h,
+            height: 26.h,
           ),
           TitleProfileWidget(title: local.profileInfo),
           ProfileInfoWidget(
@@ -76,11 +76,7 @@ class ProfileItemData extends StatelessWidget {
                   "",
               text2: local.email,
               value2: profileData.email ?? ""),
-          Divider(
-            color: AppColors.primaryColorGrey,
-            thickness: 2,
-            height: 15.h,
-          ),
+          dividerProfile(),
           TitleProfileWidget(title: local.workHours),
           WorkHoursWidget(
               shiftNo: "${local.shift} 1",
@@ -90,11 +86,7 @@ class ProfileItemData extends StatelessWidget {
               shiftNo: "${local.shift} 2",
               from: profileData.weekendworkhoursfrom ?? "0",
               to: profileData.weekendworkhoursto ?? "0"),
-          Divider(
-            color: AppColors.primaryColorGrey,
-            thickness: 2,
-            height: 15.h,
-          ),
+          dividerProfile(),
           TitleProfileWidget(title: local.vacationsBalance),
           VacationBalanceWidget(
               typeVacation: local.annualBalance,
@@ -102,11 +94,7 @@ class ProfileItemData extends StatelessWidget {
           VacationBalanceWidget(
               typeVacation: local.compensatoryBalance,
               dayNo: "${profileData.balancearda} ${local.days}"),
-          Divider(
-            color: AppColors.primaryColorGrey,
-            thickness: 2,
-            height: 15.h,
-          ),
+          dividerProfile(),
           TitleProfileWidget(title: local.salary),
           VacationBalanceWidget(
               typeVacation: local.basicSalary,
@@ -119,6 +107,13 @@ class ProfileItemData extends StatelessWidget {
               dayNo: profileData.empBank ?? "00"),
         ],
       ),
+    );
+  }
+  Widget dividerProfile() {
+    return Divider(
+      color: AppColors.primaryColorGrey,
+      thickness: 1.2,
+      height: 10.h,
     );
   }
 }
