@@ -117,5 +117,7 @@
     "cashSalary": "Cash with salary",
     "eligibility": "Eligibility",
     "deduction" : "Deduction",
-    "type" : "Type"
+    "type" : "Type",
+    "attendance_in" : "Attendance In",
+    "attendance_out" : "Attendance Out"
 }

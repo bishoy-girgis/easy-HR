@@ -70,6 +70,9 @@ class HomeView extends StatelessWidget {
                   imageIcon: const AssetImage("assets/images/salary.png"),
                 ),
                 CategoryWidget(
+                  onTap: () {
+                    navigatorKey.currentState?.pushNamed(PageRouteName.attendance);
+                  },
                   categoryName: local.attendance,
                   image: true,
                   imageIcon:

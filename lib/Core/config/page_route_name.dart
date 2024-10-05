@@ -9,4 +9,5 @@ class PageRouteName {
   static const salary = "/salary";
   static const loan = "/loan";
   static const financial = "/financial";
+  static const attendance = "/attendance";
 }

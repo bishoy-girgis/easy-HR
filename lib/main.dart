@@ -1,4 +1,5 @@
 import 'package:easy_hr/Core/config/page_route_name.dart';
+import 'package:easy_hr/Features/attendance/manager/cubit.dart';
 import 'package:easy_hr/Features/vacations/manager/vacation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
               create: (context) => LanguageProvider(),
             ),
             BlocProvider(create: (context) => VacationCubit()),
+            BlocProvider(create: (context) => AttendanceCubit()),
           ],
           child: Builder(builder: (context) {
             var languagesProvider = Provider.of<LanguageProvider>(context);
