@@ -27,16 +27,23 @@ class AttendanceView extends StatelessWidget {
       ),
       body: BlocConsumer<AttendanceCubit, AttendanceState>(
           listener: (context, state) {
-        if (state is LoadingOSFingerPrintState) {
+        if (state is LoadingOSFingerPrintState || state is AttendanceLoading) {
           EasyLoading.show();
-        } else if (state is ErrorOSFingerPrintState) {
+        }else if (state is AttendanceError ) {
+          EasyLoading.dismiss();
+          GlobalMethods.buildFlutterToast(
+              message: state.message ?? " ", state: ToastStates.ERROR);
+        }else if (state is AttendanceSuccess ) {
+          EasyLoading.dismiss();
+          GlobalMethods.buildFlutterToast(
+              message: state.message ?? " ", state: ToastStates.SUCCESS);
+        } else if (state is ErrorOSFingerPrintState ) {
           EasyLoading.dismiss();
           GlobalMethods.buildFlutterToast(
               message: state.message ?? " ", state: ToastStates.ERROR);
         } else if (state is SuccessOSFingerPrintState) {
           EasyLoading.dismiss();
-          GlobalMethods.buildFlutterToast(
-              message: "FingerPrint Success", state: ToastStates.SUCCESS);
+          AttendanceCubit.get(context).addAttendance();
         }
       }, builder: (context, state) {
         return Container(

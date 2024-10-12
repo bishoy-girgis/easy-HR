@@ -1,12 +1,26 @@
 import 'dart:developer';
 
 import 'package:easy_hr/Features/attendance/manager/states.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:local_auth/local_auth.dart';
+
+import '../../../Core/services/web_service.dart';
+import '../../../Data/data_source/attendance/attendance_data_source.dart';
+import '../../../Data/repository_imp/attendance/attendance_repo_imp.dart';
+import '../../../Domain/repositories/attendance/attendance_repository.dart';
+import '../../../Domain/usecase/attendance/attendance_usecase.dart';
 
 class AttendanceCubit extends Cubit<AttendanceState> {
   AttendanceCubit() : super(AttendanceInitial());
+  late AttendanceDataSource attendanceDataSource =
+      AttendanceDataSource(WebService().publicDio);
+  late AttendanceRepository attendanceRepository =
+      AttendanceRepositoryImp(attendanceDataSource);
+  late AttendanceUseCase attendanceUseCase =
+      AttendanceUseCase(attendanceRepository);
 
   static AttendanceCubit get(context) => BlocProvider.of(context);
 
@@ -50,6 +64,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     }
     availableBiometrics = availableBiometrics;
   }
+
   Future<void> osFingerPrint() async {
     emit(LoadingOSFingerPrintState());
 
@@ -84,5 +99,21 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   changeAttendance() {
     emit(AttendanceChangeState());
     attendanceIn = !attendanceIn!;
+  }
+
+  addAttendance() async {
+    String fromFormattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now()); // Change format here
+
+    emit(AttendanceLoading());
+    var result = await attendanceUseCase.execute(
+      attendType: attendanceIn == true ? 0 : 1,
+      date: "'$fromFormattedDate'",
+    );
+    result.fold((error) {
+      debugPrint(error.message);
+      emit(AttendanceError(message: error.message));
+    }, (r) async {
+      emit(AttendanceSuccess(message: r));
+    });
   }
 }
