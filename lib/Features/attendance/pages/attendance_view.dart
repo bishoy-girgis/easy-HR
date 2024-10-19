@@ -2,7 +2,7 @@ import 'package:easy_hr/Core/widgets/gap.dart';
 import 'package:easy_hr/Features/attendance/manager/cubit.dart';
 import 'package:easy_hr/Features/attendance/manager/states.dart';
 import 'package:easy_hr/Features/attendance/widgets/attendance_in_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:easy_hr/Features/attendance/widgets/clock.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -29,15 +29,15 @@ class AttendanceView extends StatelessWidget {
           listener: (context, state) {
         if (state is LoadingOSFingerPrintState || state is AttendanceLoading) {
           EasyLoading.show();
-        }else if (state is AttendanceError ) {
+        } else if (state is AttendanceError) {
           EasyLoading.dismiss();
           GlobalMethods.buildFlutterToast(
               message: state.message ?? " ", state: ToastStates.ERROR);
-        }else if (state is AttendanceSuccess ) {
+        } else if (state is AttendanceSuccess) {
           EasyLoading.dismiss();
           GlobalMethods.buildFlutterToast(
               message: state.message ?? " ", state: ToastStates.SUCCESS);
-        } else if (state is ErrorOSFingerPrintState ) {
+        } else if (state is ErrorOSFingerPrintState) {
           EasyLoading.dismiss();
           GlobalMethods.buildFlutterToast(
               message: state.message ?? " ", state: ToastStates.ERROR);
@@ -59,7 +59,11 @@ class AttendanceView extends StatelessWidget {
             children: [
               const AttendanceInWidget(),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.04,
+              ),
+              const ClockWidget(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.3,
               ),
               InkWell(
                 onTap: () => AttendanceCubit.get(context).osFingerPrint(),
@@ -75,6 +79,19 @@ class AttendanceView extends StatelessWidget {
                     color: AppColors.whiteColor,
                     size: 50.sp,
                   ),
+                ),
+              ),
+              const GapH(h: 2),
+              InkWell(
+                onTap: () => AttendanceCubit.get(context).addAttendance(),
+                child: Container(
+                  padding:
+                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: AppColors.primaryColorGrey,
+                      border: Border.all(color: AppColors.primaryColorGrey)),
+                  child:  TextBuilder(local.submit,color: AppColors.whiteColor,),
                 ),
               ),
             ],

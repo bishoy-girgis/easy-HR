@@ -36,18 +36,14 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     supportState = false;
     var value = await auth.isDeviceSupported();
     supportState = value;
-    print('supportState is $supportState');
   }
 
   Future<void> checkBiometrics() async {
     late bool canCheckBiometrics;
     try {
       canCheckBiometrics = await auth.canCheckBiometrics;
-      print('canCheckBiometrics is $canCheckBiometrics');
     } on PlatformException catch (e) {
       canCheckBiometrics = false;
-      print('canCheckBiometrics is $canCheckBiometrics');
-      print(e);
     }
     canCheckBiometrics = canCheckBiometrics;
   }
@@ -56,11 +52,8 @@ class AttendanceCubit extends Cubit<AttendanceState> {
     late List<BiometricType> availableBiometrics;
     try {
       availableBiometrics = await auth.getAvailableBiometrics();
-      print('availableBiometrics is $availableBiometrics');
     } on PlatformException catch (e) {
       availableBiometrics = <BiometricType>[];
-      print('availableBiometrics is $availableBiometrics');
-      print(e);
     }
     availableBiometrics = availableBiometrics;
   }
@@ -102,12 +95,10 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   }
 
   addAttendance() async {
-    String fromFormattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now()); // Change format here
-
     emit(AttendanceLoading());
     var result = await attendanceUseCase.execute(
       attendType: attendanceIn == true ? 0 : 1,
-      date: "'$fromFormattedDate'",
+      date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
     );
     result.fold((error) {
       debugPrint(error.message);

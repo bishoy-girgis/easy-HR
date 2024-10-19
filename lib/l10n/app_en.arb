@@ -119,5 +119,7 @@
     "deduction" : "Deduction",
     "type" : "Type",
     "attendance_in" : "Attendance In",
-    "attendance_out" : "Attendance Out"
+    "attendance_out" : "Attendance Out",
+    "submit" : "Submit",
+    "time" : "Time"
 }

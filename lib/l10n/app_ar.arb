@@ -70,7 +70,7 @@
   "inReview": "قيد المراجعة",
   "approved": "موافق",
   "balance": "رصيد",
-  "date": "تاريخ",
+  "date": "التاريخ",
   "basic": "الأساسي",
   "awards": "المستحق",
   "net": "الصافي",
@@ -107,5 +107,7 @@
   "deduction": "استقطاع ",
   "type": "النوع",
   "attendance_in": "حضور",
-  "attendance_out": "انصراف"
+  "attendance_out": "انصراف",
+  "submit" : "تسجيل",
+  "time": "الوقت"
 }
